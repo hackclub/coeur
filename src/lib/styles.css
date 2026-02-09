@@ -1,0 +1,33 @@
+h1, h2 {
+    font-family: Montserrat;
+    color: white;
+}
+h1 {
+    font-weight: 900;
+}
+h3 {
+    font-family: Playwrite DK Loopet;
+    color: white;
+}
+h4, h5, h6, p {
+    font-family: Gabarito;
+    color: white;
+}
+button {
+    font-family: Gabarito;
+    background-color: rgb(121, 9, 87);
+}
+button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(121, 9, 87);
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+a {
+    color: white;
+}
+nav {
+    color: white;
+}

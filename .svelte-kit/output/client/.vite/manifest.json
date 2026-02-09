@@ -1,0 +1,240 @@
+{
+  ".svelte-kit/generated/client-optimized/app.js": {
+    "file": "_app/immutable/entry/app.suodi2vm.js",
+    "name": "entry/app",
+    "src": ".svelte-kit/generated/client-optimized/app.js",
+    "isEntry": true,
+    "imports": [
+      "_Dx_PPwk_.js",
+      "_Cf5eLdZj.js",
+      "_By_xH-7n.js",
+      "_DcEM9jAB.js",
+      "_MXz4SnZY.js",
+      "_C1X_bY97.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/generated/client-optimized/nodes/0.js",
+      ".svelte-kit/generated/client-optimized/nodes/1.js",
+      ".svelte-kit/generated/client-optimized/nodes/2.js",
+      ".svelte-kit/generated/client-optimized/nodes/3.js",
+      ".svelte-kit/generated/client-optimized/nodes/4.js",
+      ".svelte-kit/generated/client-optimized/nodes/5.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/0.js": {
+    "file": "_app/immutable/nodes/0.DW5qAzzH.js",
+    "name": "nodes/0",
+    "src": ".svelte-kit/generated/client-optimized/nodes/0.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_Dx_PPwk_.js",
+      "_C1X_bY97.js",
+      "_D5nzp_AA.js"
+    ],
+    "css": [
+      "_app/immutable/assets/0.BP4zfEWw.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/favicon.HuKca9eS.png"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/1.js": {
+    "file": "_app/immutable/nodes/1.BIhG8heE.js",
+    "name": "nodes/1",
+    "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_B0gncjjH.js",
+      "_Dx_PPwk_.js",
+      "_Cf5eLdZj.js",
+      "_DX_QD5Ii.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/2.js": {
+    "file": "_app/immutable/nodes/2.cxmzdmJZ.js",
+    "name": "nodes/2",
+    "src": ".svelte-kit/generated/client-optimized/nodes/2.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_DcEM9jAB.js",
+      "_Dx_PPwk_.js",
+      "_VkAAB9OL.js",
+      "_MXz4SnZY.js",
+      "_D5nzp_AA.js",
+      "_BBFxSaI5.js",
+      "_CDsp1QBK.js"
+    ],
+    "css": [
+      "_app/immutable/assets/2.BVgN7v7Q.css"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/3.js": {
+    "file": "_app/immutable/nodes/3.C-863vJ7.js",
+    "name": "nodes/3",
+    "src": ".svelte-kit/generated/client-optimized/nodes/3.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_Dx_PPwk_.js",
+      "_VkAAB9OL.js",
+      "_D5nzp_AA.js",
+      "_BBFxSaI5.js",
+      "_CDsp1QBK.js"
+    ],
+    "css": [
+      "_app/immutable/assets/3.beswCpeS.css"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/4.js": {
+    "file": "_app/immutable/nodes/4.DMIdVCky.js",
+    "name": "nodes/4",
+    "src": ".svelte-kit/generated/client-optimized/nodes/4.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_Dx_PPwk_.js",
+      "_VkAAB9OL.js",
+      "_MXz4SnZY.js",
+      "_D5nzp_AA.js",
+      "_BBFxSaI5.js",
+      "_CDsp1QBK.js"
+    ],
+    "css": [
+      "_app/immutable/assets/4.DpbjWGYT.css"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/5.js": {
+    "file": "_app/immutable/nodes/5.B8UkUliM.js",
+    "name": "nodes/5",
+    "src": ".svelte-kit/generated/client-optimized/nodes/5.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_By_xH-7n.js",
+      "_Dx_PPwk_.js",
+      "_VkAAB9OL.js",
+      "_D5nzp_AA.js",
+      "_BBFxSaI5.js",
+      "_CDsp1QBK.js"
+    ],
+    "css": [
+      "_app/immutable/assets/5.Fj5XI1F2.css"
+    ]
+  },
+  "_B0gncjjH.js": {
+    "file": "_app/immutable/chunks/B0gncjjH.js",
+    "name": "legacy",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_BBFxSaI5.js": {
+    "file": "_app/immutable/chunks/BBFxSaI5.js",
+    "name": "footer",
+    "imports": [
+      "_Dx_PPwk_.js",
+      "_By_xH-7n.js",
+      "_B0gncjjH.js",
+      "_VkAAB9OL.js",
+      "_D5nzp_AA.js",
+      "_CDsp1QBK.js"
+    ],
+    "css": [
+      "_app/immutable/assets/footer.DorHWFcj.css"
+    ]
+  },
+  "_By_xH-7n.js": {
+    "file": "_app/immutable/chunks/By_xH-7n.js",
+    "name": "disclose-version",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_C1X_bY97.js": {
+    "file": "_app/immutable/chunks/C1X_bY97.js",
+    "name": "branches",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_CDsp1QBK.js": {
+    "file": "_app/immutable/chunks/CDsp1QBK.js",
+    "name": "client"
+  },
+  "_Cf5eLdZj.js": {
+    "file": "_app/immutable/chunks/Cf5eLdZj.js",
+    "name": "render",
+    "imports": [
+      "_Dx_PPwk_.js",
+      "_VkAAB9OL.js",
+      "_By_xH-7n.js"
+    ]
+  },
+  "_D5nzp_AA.js": {
+    "file": "_app/immutable/chunks/D5nzp_AA.js",
+    "name": "attributes",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_DX_QD5Ii.js": {
+    "file": "_app/immutable/chunks/DX_QD5Ii.js",
+    "name": "entry",
+    "imports": [
+      "_Dx_PPwk_.js",
+      "_CDsp1QBK.js",
+      "_DcEM9jAB.js"
+    ]
+  },
+  "_DcEM9jAB.js": {
+    "file": "_app/immutable/chunks/DcEM9jAB.js",
+    "name": "index-client",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_Dx_PPwk_.js": {
+    "file": "_app/immutable/chunks/Dx_PPwk_.js",
+    "name": "runtime"
+  },
+  "_MXz4SnZY.js": {
+    "file": "_app/immutable/chunks/MXz4SnZY.js",
+    "name": "if",
+    "imports": [
+      "_Dx_PPwk_.js",
+      "_C1X_bY97.js"
+    ]
+  },
+  "_VkAAB9OL.js": {
+    "file": "_app/immutable/chunks/VkAAB9OL.js",
+    "name": "events",
+    "imports": [
+      "_Dx_PPwk_.js"
+    ]
+  },
+  "_footer.DorHWFcj.css": {
+    "file": "_app/immutable/assets/footer.DorHWFcj.css",
+    "src": "_footer.DorHWFcj.css"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
+    "file": "_app/immutable/entry/start.BiGSBtlN.js",
+    "name": "entry/start",
+    "src": "node_modules/@sveltejs/kit/src/runtime/client/entry.js",
+    "isEntry": true,
+    "imports": [
+      "_DX_QD5Ii.js"
+    ]
+  },
+  "src/lib/assets/favicon.png": {
+    "file": "_app/immutable/assets/favicon.HuKca9eS.png",
+    "src": "src/lib/assets/favicon.png"
+  }
+}
