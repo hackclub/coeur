@@ -309,6 +309,10 @@
             <p>Incorporate music, speech, or both to your project.</p>
         </div>
         <div>
+            <h3>+4 Hearts</h3>
+            <p>Participate in a demo and get approved by staff for this bonus. Demos will be announced in the slack channel. You can only get this bonus once for an individual project.</p>
+        </div>
+        <div>
             <h3>+5 Hearts</h3>
             <p>Exceptional use of animations and graphics. All illustrations should also be original.</p>
         </div>

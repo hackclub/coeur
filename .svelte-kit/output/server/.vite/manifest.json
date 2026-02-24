@@ -51,6 +51,16 @@
       "_context.js"
     ]
   },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "name": "index",
+    "imports": [
+      "_equality.js",
+      "_exports.js",
+      "_utils.js",
+      "_context.js"
+    ]
+  },
   "_internal.js": {
     "file": "chunks/internal.js",
     "name": "internal",
@@ -95,9 +105,7 @@
     "isEntry": true,
     "imports": [
       "_context.js",
-      "_equality.js",
-      "_exports.js",
-      "_utils.js"
+      "_index2.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -187,6 +195,21 @@
     ],
     "css": [
       "_app/immutable/assets/_page.O-o8L4rL.css"
+    ]
+  },
+  "src/routes/submissions/[project_id]/+page.svelte": {
+    "file": "entries/pages/submissions/_project_id_/_page.svelte.js",
+    "name": "entries/pages/submissions/_project_id_/_page.svelte",
+    "src": "src/routes/submissions/[project_id]/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js",
+      "_footer.js",
+      "_context.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BcK9ET51.css"
     ]
   }
 }
