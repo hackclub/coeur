@@ -6,7 +6,7 @@ import { e as escape_html } from "../../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     page.params.project_id;
-    let projectName = "";
+    let projectName = "Loading...";
     let sugarRushes = [];
     let slackId = "";
     let totalHearts = 0;

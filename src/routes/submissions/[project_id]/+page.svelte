@@ -8,7 +8,7 @@
     import Footer from "$lib/footer.svelte";
 
     let projectId = $state(page.params.project_id);
-    let projectName = $state("");
+    let projectName = $state("Loading...");
     let hours = $state(0);
     let sugarRushes = $state([]);
     let hearts = $state(0);
@@ -80,9 +80,11 @@
     #pinkBackground {
         background-color: rgb(255, 66, 161);
         margin-top: -40px;
+        padding-top: 20px;
     }
     #pinkContainer {
         margin: 30px;
+        margin-top: 40px;
         padding: 20px;
         border-radius: 50px;
         background-color: rgb(146, 45, 96);
