@@ -301,25 +301,29 @@
             <p>Make a card for someone in Hack Club! Include a picture in the slack channel of you sending them the card.</p>
         </div>
         <div>
-            <h3>+2 Hearts</h3>
+            <h3>+1 Heart</h3>
             <p>Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p>
         </div>
         <div>
-            <h3>+3 Hearts</h3>
+            <h3>+2 Hearts</h3>
             <p>Incorporate music, speech, or both to your project.</p>
         </div>
         <div>
-            <h3>+4 Hearts</h3>
+            <h3>+2 Hearts</h3>
+            <p>Use a web-framework you've never learned or used before!</p>
+        </div>
+        <div>
+            <h3>+2 Hearts</h3>
             <p>Participate in a demo and get approved by staff for this bonus. Demos will be announced in the slack channel. You can only get this bonus once for an individual project.</p>
         </div>
         <div>
-            <h3>+5 Hearts</h3>
-            <p>Exceptional use of animations and graphics. All illustrations should also be original.</p>
+            <h3>+3 Hearts</h3>
+            <p>Exceptional use of original animations and graphics. All illustrations should also be original.</p>
         </div>
         <div>
-            <h3>+5 Hearts</h3>
-            <p>Use a web-framework you've never learned or used before!</p>
-        </div>
+            <h3>+4 Hearts</h3>
+            <p>Exceptional quality project. This sugar rush is awarded by staff only to impressive and well-built projects. You do not need to list this on your README.</p>
+         </div>
     </div>
     <p>More may be added in the future. Check back here periodically!</p>
 </div>
@@ -327,6 +331,7 @@
     <img src="{base}/images/wave3.png" alt="Wave graphic" class="waveDown" style="width: 100%; user-select: none; -webkit-user-drag: none" />
 
     <h1 style="padding: 20px;">Ready to submit?</h1>
+    <p>Then submit now! Submissions close on March 15th at 11:59PM Eastern Time</p>
     <button onclick={function() {window.location.href = "https://submit.hackclub.com/coeur"}}>Submit Work</button><br>
     {#if mobile == ""}
     <img src="{base}/images/envelope.png" alt="Envelope" style="max-width: 500px; transform: rotate(3deg);"/>
@@ -355,7 +360,7 @@
     </div>
     <div>
         <h2>How many hearts will an average project get?</h2>
-        <p>The average amount of hearts a 6-hour project with no sugar rushes will get is around 5 hearts. The demo project would get around 8 hearts in total, including one +2 sugar rush.</p>
+        <p>Projects are awarded between 2-10 hearts based on overall quality. From this, sugar rushes are then applied. The demo project would get around 8 hearts in total, including one +2 sugar rush.</p>
     </div>
     <div>
         <h2>I have more questions!</h2>
