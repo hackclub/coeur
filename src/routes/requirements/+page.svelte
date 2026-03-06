@@ -126,10 +126,6 @@
             <p>No submission should ever be written by AI. Usage of AI is permitted for reference and must be written into your project by you entirely. AI reference code cannot make up more than 30% of your submission.</p>
         </div>
         <div>
-            <h3>Accessibility</h3>
-            <p>All submissions should fully work on mobile and desktop/laptop devices. This can be through interaction with the GUI.</p>
-        </div>
-        <div>
             <h3>Including a README</h3>
             <p>The repository that contains your code must include a <i>README.md</i>. Your README should include a description of your e-card and who/what it's for/about, what framework or languages you used to make it, areas in which you pushed yourself to make a new feature, and a list of all sugar rushes that apply to your project (alongside an explanation for why you should get that sugar rush). No sugar rushes will be applied to projects that do not have them listed on the README.</p>
         </div>

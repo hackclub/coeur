@@ -294,7 +294,11 @@
     <div id="sugarGrid">
         <div>
             <h3>+1 Heart</h3>
-            <p>Spend over 10 hours on your project</p>
+            <p>Spend over 12 hours on your project</p>
+        </div>
+        <div>
+            <h3>+1 Heart</h3>
+            <p>Have your project work fully on mobile and desktop. Your responsive design should work well.</p>
         </div>
         <div>
             <h3>+1 Heart</h3>
