@@ -309,11 +309,7 @@
             <p>Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p>
         </div>
         <div>
-            <h3>+2 Hearts</h3>
-            <p>Incorporate music, speech, or both to your project.</p>
-        </div>
-        <div>
-            <h3>+2 Hearts</h3>
+            <h3>+1 Hearts</h3>
             <p>Use a web-framework you've never learned or used before!</p>
         </div>
         <div>
@@ -322,10 +318,6 @@
         </div>
         <div>
             <h3>+3 Hearts</h3>
-            <p>Exceptional use of original animations and graphics. All illustrations should also be original.</p>
-        </div>
-        <div>
-            <h3>+4 Hearts</h3>
             <p>Exceptional quality project. This sugar rush is awarded by staff only to impressive and well-built projects. You do not need to list this on your README.</p>
          </div>
     </div>
@@ -353,6 +345,10 @@
     <div>
         <h2>Can I submit multiple projects?</h2>
         <p>Yes! You can make multiple e-cards; however, you should challenge yourself to add more features to each new submission <i>(we will check the progression of your submissions)</i>. For prizes such as the sweatshirt, you aren't likely to get enough hearts from one submission to purchase.</p>
+    </div>
+    <div>
+        <h2>Can I use Lapse?</h2>
+        <p>You can use <a href="https://lapse.hackclub.com">Lapse</a> to track hours worked on graphics and art; however, this should not exceed 20% of the total hours you submit.</p>
     </div>
     <div>
         <h2>How many hours do I need to put into a project at minimum?</h2>
