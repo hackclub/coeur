@@ -74,7 +74,7 @@
         }
     }
     #content {
-        margin-top: 380px;
+        margin-top: 400px;
         z-index: 1;
         background-color: rgb(128, 12, 60);
         border-top-left-radius: 20px;
@@ -180,7 +180,7 @@
         animation: pulse 1.5s infinite ease-in-out;
     }
     #checkOut.mobile {
-        left: 90%;
+        left: 85%;
     }
     @keyframes pulse {
         0%, 100% {
@@ -197,7 +197,7 @@
 </div>
 <div id="title">
     <h1 style:margin-top=50px style:font-size=50px>SHOP</h1>
-    <p style:margin-bottom=10px>The shop is under construction and is subject to changes, along with the catalog of items and the price of each item. Items cannot currently be purchased.</p>
+    <p style:margin-bottom=10px>Welcome to the shop for Version 1 of <span translate="no">Cœur</span>! Prices and the catalog of items below should be confirmed and you can now purchase items! Do note that prices and the catalog of items may change for Version 2.</p>
     <p><button onclick={function() {window.location.href = base + "/"}}>Return Home</button></p>
 </div>
 <div id="content">

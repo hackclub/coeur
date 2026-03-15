@@ -23,18 +23,26 @@ let products = [
   {
     "name": "Lamp",
     "hearts": 5,
-    "desc": "$25 USD for heart themed stationary! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
+    "desc": "$25 USD for heart themed lamps! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
     "img": "lamp",
     "grant": true,
     "id": 2
   },
   {
+    "name": "Candy",
+    "hearts": 5,
+    "desc": "$25 USD for heart themed candy (lollipops, gummies, conversation hearts, and more are included in this)! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
+    "img": "candy",
+    "grant": true,
+    "id": 3
+  },
+  {
     "name": "Orpheus x Heidi Sweatshirt",
-    "hearts": 20,
-    "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding!",
+    "hearts": 13,
+    "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding! Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
     "img": "sweatshirt",
     "grant": false,
-    "id": 3
+    "id": 4
   }
 ];
 function _page($$renderer, $$props) {
@@ -50,7 +58,7 @@ function _page($$renderer, $$props) {
         $$renderer4.push(`<title>Shop | Coeur</title>`);
       });
     });
-    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>The shop is under construction and is subject to changes, along with the catalog of items and the price of each item. Items cannot currently be purchased.</p> <p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
+    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>Welcome to the shop for Version 1 of <span translate="no" class="svelte-a8yt2h">Cœur</span>! Prices and the catalog of items below should be confirmed and you can now purchase items! Do note that prices and the catalog of items may change for Version 2.</p> <p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
     const each_array = ensure_array_like(products);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let x = each_array[$$index];

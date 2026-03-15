@@ -18,17 +18,25 @@ export let products = [
     {
         "name": "Lamp",
         "hearts": 5,
-        "desc": "$25 USD for heart themed stationary! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
+        "desc": "$25 USD for heart themed lamps! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
         "img": "lamp",
         "grant": true,
         "id": 2
     },
     {
+        "name": "Candy",
+        "hearts": 5,
+        "desc": "$25 USD for heart themed candy (lollipops, gummies, conversation hearts, and more are included in this)! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
+        "img": "candy",
+        "grant": true,
+        "id": 3
+    },
+    {
         "name": "Orpheus x Heidi Sweatshirt",
-        "hearts": 20,
-        "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding!",
+        "hearts": 13,
+        "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding! Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
         "img": "sweatshirt",
         "grant": false,
-        "id": 3
+        "id": 4
     }
 ]
