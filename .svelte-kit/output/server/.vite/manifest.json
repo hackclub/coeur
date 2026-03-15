@@ -191,10 +191,26 @@
     "imports": [
       "_index.js",
       "_server.js",
-      "_footer.js"
+      "_footer.js",
+      "_context.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.O-o8L4rL.css"
+      "_app/immutable/assets/_page.DNUKAT42.css"
+    ]
+  },
+  "src/routes/shop/confirmation/+page.svelte": {
+    "file": "entries/pages/shop/confirmation/_page.svelte.js",
+    "name": "entries/pages/shop/confirmation/_page.svelte",
+    "src": "src/routes/shop/confirmation/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_server.js",
+      "_footer.js",
+      "_context.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BfUIUu1B.css"
     ]
   },
   "src/routes/submissions/[project_id]/+page.svelte": {

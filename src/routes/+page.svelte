@@ -309,7 +309,7 @@
             <p>Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p>
         </div>
         <div>
-            <h3>+1 Hearts</h3>
+            <h3>+1 Heart</h3>
             <p>Use a web-framework you've never learned or used before!</p>
         </div>
         <div>

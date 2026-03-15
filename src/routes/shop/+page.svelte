@@ -1,5 +1,22 @@
 <script>
     import { base } from "$app/paths";
+    import { onMount } from 'svelte';
+    import { products } from "$lib/shop.js";
+
+    let cart = $state([]);
+    for (let i = 0; i < products.length; i++) {
+        cart.push(0);
+    }
+    let checkOut = $state(false);
+    $effect(function() {
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i] > 0) {
+                checkOut = true;
+                return;
+            }
+        }
+        checkOut = false;
+    })
 
     let Mobile = $state("");
     let charX = $state(0);
@@ -13,6 +30,28 @@
             Mobile = "";
         }
     })
+
+    function modifyCart(mode, id) {
+        if (mode == 0) {
+            if (cart[id] > 0) {
+                cart[id]--;
+            }
+        }
+        else {
+            cart[id]++;
+        }
+        //console.log(getOrder())
+    }
+    function getOrder() {
+        let order = "";
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i] > 0) {
+                order += "[" + products[i].name + ";" + products[i].hearts + ";" + cart[i] + "]";
+            }
+        }
+        window.location.href = base + "/shop/confirmation?order=" + order;
+    }
+
 </script>
 <svelte:head>
     <title>Shop | Coeur</title>
@@ -52,7 +91,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.192);
             transition: 0.3s all ease-in-out;
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 35px;
             margin: 20px;
             border: 10px solid rgba(197, 68, 120, 0);
             h2 {
@@ -63,6 +102,8 @@
             img {
                 max-height: 200px;
                 border-radius: 30px;
+                user-select: none;
+                -webkit-user-drag: none;
             }
             span.hcb {
                 font-family: Gabarito;
@@ -78,9 +119,29 @@
                     transform: translateY(5px);
                 }
             }
+            button {
+                background-color: rgb(197, 68, 119);
+                margin: 5px;
+            }
+            button.invisible {
+                background-color: rgb(184, 31, 92);
+                cursor: not-allowed;
+            }
+            button.invisible:hover {
+                background-color: rgb(184, 31, 92);
+                color: white;
+            }
+            button:hover {
+                background-color: white;
+                color: rgb(197, 68, 119);
+            }
         }
         div:hover {
             border: 10px solid rgb(197, 68, 119);
+        }
+        div.purchased {
+            border: 10px solid rgb(250, 120, 176);
+            box-shadow: 0px 0px 10px 10px rgba(185, 163, 167, 0.24);
         }
     }
 
@@ -96,6 +157,28 @@
         z-index: -1;
         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.406);
     }
+
+    #checkOut {
+        position: fixed;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        bottom: -200px;
+        transition: bottom 0.7s ease-in-out;
+        background-color: rgba(218, 116, 133, 0.932);
+        padding: 10px;
+        border-radius: 80px;
+        width: 70%;
+        button {
+            background-color: rgb(104, 44, 54);
+        }
+        button:hover {
+            background-color: white;
+            color: rgb(104, 44, 54);
+        }
+    }
+    #checkOut.active {
+        bottom: -25px;
+    }
 </style>
 <svelte:window bind:innerWidth={charX}></svelte:window>
 <div id="background">
@@ -107,41 +190,18 @@
     <p><button onclick={function() {window.location.href = base + "/"}}>Return Home</button></p>
 </div>
 <div id="content">
-    <div>
-        <img src="{base}/images/shop/plushie.png" alt="Boy holding plushie" />
-        <h2>Heart Plushie</h2>
-        <h3><span class="material-symbols-outlined">favorite</span> 2</h3>
-        <p>$10 USD for a heart themed plushie, or heart themed plushies! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay.</p>
-        <span class="hcb">HCB Grant</span>
+{#each products as x}
+    <div class:purchased={cart[x.id] > 0}>
+        <img src="{base}/images/shop/{x.img}.png" alt="Boy holding plushie" />
+        <h2>{x.name}</h2>
+        <h3 translate="no"><span class="material-symbols-outlined" translate="no">favorite</span> {x.hearts} {#if cart[x.id] > 0}<i>(x {cart[x.id]})</i>{/if}</h3>
+        <p><button class="purchase" class:invisible={cart[x.id] == 0} translate="no" onclick={function() {modifyCart(0, x.id)}}>-</button><button class="purchase" translate="no"  onclick={function() {modifyCart(1, x.id)}}>+</button></p>
+        <p>{x.desc}</p>
+        {#if x.grant}<span class="hcb">HCB Grant</span>{/if}
     </div>
-    <div>
-        <img src="{base}/images/shop/pens.png" alt="Pens" />
-        <h2>Heart Themed Stationary</h2>
-        <h3><span class="material-symbols-outlined">favorite</span> 2</h3>
-        <p>$10 USD for heart themed stationary! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay.</p>
-        <span class="hcb">HCB Grant</span>
-    </div>
-    <div>
-        <img src="{base}/images/shop/sugarRush.png" alt="Sugar rush sticker"/>
-        <h2>Sugar Rush Orpheus Sticker</h2>
-        <h3><span class="material-symbols-outlined">favorite</span> 3</h3>
-        <p>Don't try consuming this much sugar at home... you can get the sticker, though.</p>
-    </div>
-    <div>
-        <img src="{base}/images/shop/lamp.png" alt="Lamp" />
-        <h2>Heart Lamp</h2>
-        <h3><span class="material-symbols-outlined">favorite</span> 5</h3>
-        <p>$20 USD for a heart themed lamp, or heart themed lamps! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay.</p>
-        <span class="hcb">HCB Grant</span>
-
-    </div>
-    <div>
-        <img src="{base}/images/shop/sweatshirt.png" alt="Sweatshirt"/>
-        <h2>Sweatshirt</h2>
-        <h3><span class="material-symbols-outlined">favorite</span> 20</h3>
-        <p>Featuring Orpheus and Heidi, the official <span>Cœur</span> sweatshirt with Hack Club branding!</p>
-        
-
-    </div>
+{/each}
+</div>
+<div id="checkOut" class:active={checkOut}>
+    <p><button onclick={getOrder}>Checkout</button></p>
 </div>
 <Footer />
