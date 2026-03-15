@@ -10,7 +10,7 @@ return {
 	assets: new Set(["images/donut.png","images/envelope.png","images/heidiEnvelope.png","images/landing/1.png","images/landing/2.png","images/landing/3.png","images/landing/4.png","images/landing/5.png","images/landingMobile/1.png","images/landingMobile/2.png","images/landingMobile/3.png","images/landingMobile/4.png","images/landingMobile/5.png","images/lesbian.png","images/orphHeidi.png","images/orpheusCard.png","images/shop/lamp.png","images/shop/pens.png","images/shop/plushie.png","images/shop/sugarRush.png","images/shop/sweatshirt.png","images/sweatshirt.png","images/wave1.png","images/wave2.png","images/wave3.png","images/wave4.png","images/wave5.png","robots.txt"]),
 	mimeTypes: {".png":"image/png",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.BvTPq5nk.js",app:"_app/immutable/entry/app.BqE4-fV5.js",imports:["_app/immutable/entry/start.BvTPq5nk.js","_app/immutable/chunks/GIt1i-wx.js","_app/immutable/chunks/2GEZsXxU.js","_app/immutable/chunks/CxlhtGUj.js","_app/immutable/chunks/Bt3hbhy7.js","_app/immutable/entry/app.BqE4-fV5.js","_app/immutable/chunks/2GEZsXxU.js","_app/immutable/chunks/DGQWFOfc.js","_app/immutable/chunks/BxOWe7fa.js","_app/immutable/chunks/DAH82hid.js","_app/immutable/chunks/Bt3hbhy7.js","_app/immutable/chunks/OjkbVcO5.js","_app/immutable/chunks/DVAaWlse.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CBqiwARR.js",app:"_app/immutable/entry/app.DJS3lBVZ.js",imports:["_app/immutable/entry/start.CBqiwARR.js","_app/immutable/chunks/YjevSUmF.js","_app/immutable/chunks/D6ji1pod.js","_app/immutable/chunks/CWiBshBp.js","_app/immutable/chunks/C4qdXfUE.js","_app/immutable/entry/app.DJS3lBVZ.js","_app/immutable/chunks/D6ji1pod.js","_app/immutable/chunks/xEm7VuXn.js","_app/immutable/chunks/DcCpkM7l.js","_app/immutable/chunks/yXg7qjZu.js","_app/immutable/chunks/C4qdXfUE.js","_app/immutable/chunks/Agh0HKCm.js","_app/immutable/chunks/BV1n_Yxd.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -19,7 +19,8 @@ return {
 			__memo(() => import('./nodes/4.js')),
 			__memo(() => import('./nodes/5.js')),
 			__memo(() => import('./nodes/6.js')),
-			__memo(() => import('./nodes/7.js'))
+			__memo(() => import('./nodes/7.js')),
+			__memo(() => import('./nodes/8.js'))
 		],
 		remotes: {
 			
@@ -61,10 +62,17 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/shop/process",
+				pattern: /^\/shop\/process\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 7 },
+				endpoint: null
+			},
+			{
 				id: "/submissions/[project_id]",
 				pattern: /^\/submissions\/([^/]+?)\/?$/,
 				params: [{"name":"project_id","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 7 },
+				page: { layouts: [0,], errors: [1,], leaf: 8 },
 				endpoint: null
 			}
 		],
