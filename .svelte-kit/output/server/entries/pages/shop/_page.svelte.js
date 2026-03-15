@@ -78,7 +78,7 @@ function _page($$renderer, $$props) {
       }
       $$renderer2.push(`<!--]--></div>`);
     }
-    $$renderer2.push(`<!--]--></div> <div id="checkOut"${attr_class("svelte-a8yt2h", void 0, { "active": checkOut, "mobile": Mobile == "Mobile" })}><p class="svelte-a8yt2h"><button class="svelte-a8yt2h"${attr_style("", { padding: "20px" })}><span class="material-symbols-outlined svelte-a8yt2h">shopping_cart_checkout</span></button></p></div> `);
+    $$renderer2.push(`<!--]--></div> <div id="checkOut"${attr_class("svelte-a8yt2h", void 0, { "active": checkOut, "mobile": Mobile == "Mobile" })}><p class="svelte-a8yt2h"><button class="svelte-a8yt2h"${attr_style("", { padding: "20px" })}><span translate="no" class="material-symbols-outlined svelte-a8yt2h">shopping_cart_checkout</span></button></p></div> `);
     Footer($$renderer2);
     $$renderer2.push(`<!---->`);
   });

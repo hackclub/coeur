@@ -213,6 +213,6 @@
 {/each}
 </div>
 <div id="checkOut" class:active={checkOut} class:mobile={Mobile=="Mobile"}>
-    <p><button style:padding=20px onclick={getOrder}><span class="material-symbols-outlined">shopping_cart_checkout</span></button></p>
+    <p><button style:padding=20px onclick={getOrder}><span translate="no" class="material-symbols-outlined">shopping_cart_checkout</span></button></p>
 </div>
 <Footer />
