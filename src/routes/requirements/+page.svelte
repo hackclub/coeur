@@ -94,7 +94,7 @@
         <div id="parallaxContent" style:transform = "translateY({scroll*0.7}px)">
                 <h1>REQUIREMENTS</h1>
                 <p style:margin-bottom=40px>These must be completed for all submissions to <span translate="no">Cœur</span></p>
-                {#if mobile == ""}
+            {#if mobile == ""}
             <img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 35%; height: auto; display: block; margin: 0 auto;" />
             {:else}
             <img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 65%; height: auto; display: block; margin: 0 auto;" />

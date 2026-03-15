@@ -50,14 +50,14 @@ function _page($$renderer, $$props) {
         $$renderer4.push(`<title>Shop | Coeur</title>`);
       });
     });
-    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>The shop is under construction and is subject to changes, along with the catalog of items and the price of each item. Items cannot currently be purchased.</p> <p class="svelte-a8yt2h"><button>Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
+    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>The shop is under construction and is subject to changes, along with the catalog of items and the price of each item. Items cannot currently be purchased.</p> <p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
     const each_array = ensure_array_like(products);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let x = each_array[$$index];
       $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)} alt="Boy holding plushie" class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> <h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
       if (cart[x.id] > 0) {
         $$renderer2.push("<!--[-->");
-        $$renderer2.push(`<i>(x ${escape_html(cart[x.id])})</i>`);
+        $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
       } else {
         $$renderer2.push("<!--[!-->");
       }
@@ -70,7 +70,7 @@ function _page($$renderer, $$props) {
       }
       $$renderer2.push(`<!--]--></div>`);
     }
-    $$renderer2.push(`<!--]--></div> <div id="checkOut"${attr_class("svelte-a8yt2h", void 0, { "active": checkOut })}><p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Checkout</button></p></div> `);
+    $$renderer2.push(`<!--]--></div> <div id="checkOut"${attr_class("svelte-a8yt2h", void 0, { "active": checkOut, "mobile": Mobile == "Mobile" })}><p class="svelte-a8yt2h"><button class="svelte-a8yt2h"${attr_style("", { padding: "20px" })}><span class="material-symbols-outlined svelte-a8yt2h">shopping_cart_checkout</span></button></p></div> `);
     Footer($$renderer2);
     $$renderer2.push(`<!---->`);
   });

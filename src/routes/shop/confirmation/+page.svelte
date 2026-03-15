@@ -98,6 +98,13 @@
         border-radius: 20px;
         margin-top: 50px;
         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.406);
+
+        h1 {
+            font-size: 50px;
+        }
+        h1.mobile {
+            font-size: 30px;
+        }
     }
 
 
@@ -107,7 +114,7 @@
     <img src="{base}/images/landing{Mobile}/1.png" alt="Heart background" />
 </div>
 <div id="title">
-    <h1 style:margin-top=50px style:font-size=50px>CONFIRMATION</h1>
+    <h1 style:margin-top=50px class:mobile={Mobile == "Mobile"}>CONFIRMATION</h1>
     <p style:margin-bottom=10px>Please review your order. If all the details below are correct, you may proceed.</p>
     <p><button onclick={function() {window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`}}>Continue</button></p>
 </div>
@@ -120,5 +127,10 @@
 <p>______________</p>
 <h1>{total} total hearts</h1>
 <p>You should make sure that you can afford this total based on the amount of hearts that you've earned from projects.</p>
+{#if Mobile == ""}
+<img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 35%; height: auto; display: block; margin: 0 auto;" />
+{:else}
+<img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 65%; height: auto; display: block; margin: 0 auto;" />
+{/if}
 </div>
 <Footer />

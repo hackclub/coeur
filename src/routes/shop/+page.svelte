@@ -161,15 +161,11 @@
     #checkOut {
         position: fixed;
         transform: translate(-50%, -50%);
-        left: 50%;
-        bottom: -200px;
-        transition: bottom 0.7s ease-in-out;
-        background-color: rgba(218, 116, 133, 0.932);
-        padding: 10px;
-        border-radius: 80px;
-        width: 70%;
+        left: 95%;
+        top: -200px;
+        transition: top 0.7s ease-in-out;
         button {
-            background-color: rgb(104, 44, 54);
+            background-color: rgb(116, 49, 93);
         }
         button:hover {
             background-color: white;
@@ -177,7 +173,22 @@
         }
     }
     #checkOut.active {
-        bottom: -25px;
+        top: 60px;
+    }
+    #checkOut.active button {
+        box-shadow: 0px 0px 10px 5px rgb(218, 119, 176);
+        animation: pulse 1.5s infinite ease-in-out;
+    }
+    #checkOut.mobile {
+        left: 90%;
+    }
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0px 0px 10px 3px rgb(218, 119, 176);
+        }
+        50% {
+            box-shadow: 0px 0px 10px 8px rgb(218, 119, 176);
+        }
     }
 </style>
 <svelte:window bind:innerWidth={charX}></svelte:window>
@@ -201,7 +212,7 @@
     </div>
 {/each}
 </div>
-<div id="checkOut" class:active={checkOut}>
-    <p><button onclick={getOrder}>Checkout</button></p>
+<div id="checkOut" class:active={checkOut} class:mobile={Mobile=="Mobile"}>
+    <p><button style:padding=20px onclick={getOrder}><span class="material-symbols-outlined">shopping_cart_checkout</span></button></p>
 </div>
 <Footer />
