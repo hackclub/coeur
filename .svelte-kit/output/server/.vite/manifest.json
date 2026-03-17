@@ -149,7 +149,8 @@
     "imports": [
       "_index.js",
       "_server.js",
-      "_footer.js"
+      "_footer.js",
+      "_context.js"
     ],
     "css": [
       "_app/immutable/assets/_page.B5g2baXX.css"

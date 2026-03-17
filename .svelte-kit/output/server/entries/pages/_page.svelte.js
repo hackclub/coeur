@@ -2,11 +2,13 @@ import { w as head, x as attr, y as attr_style, z as attr_class, F as ensure_arr
 import { b as base } from "../../chunks/server.js";
 import "@sveltejs/kit/internal/server";
 import { F as Footer } from "../../chunks/footer.js";
+import { e as escape_html } from "../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let mobile = "";
     let charY = 0;
     let mobileFactor = 1;
+    let submissionMessage = "";
     head("1uha8ag", $$renderer2, ($$renderer3) => {
       $$renderer3.title(($$renderer4) => {
         $$renderer4.push(`<title>Coeur</title>`);
@@ -60,7 +62,12 @@ function _page($$renderer, $$props) {
     $$renderer2.push(`<!--]--> <h2 class="svelte-1uha8ag"${attr_style("", {
       "font-family": "Playwrite DK Loopet, Montserrat, Gabarito",
       "margin-bottom": "20px"
-    })}>Sugar Rush Bonuses</h2> <div id="sugarGrid" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Spend over 12 hours on your project</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Have your project work fully on mobile and desktop. Your responsive design should work well.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Make a card for someone in Hack Club! Include a picture in the slack channel of you sending them the card.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Use a web-framework you've never learned or used before!</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+2 Hearts</h3> <p class="svelte-1uha8ag">Participate in a demo and get approved by staff for this bonus. Demos will be announced in the slack channel. You can only get this bonus once for an individual project.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+3 Hearts</h3> <p class="svelte-1uha8ag">Exceptional quality project. This sugar rush is awarded by staff only to impressive and well-built projects. You do not need to list this on your README.</p></div></div> <p class="svelte-1uha8ag">More may be added in the future. Check back here periodically!</p></div> <div id="submit" class="svelte-1uha8ag"><img${attr("src", `${stringify(base)}/images/wave3.png`)} alt="Wave graphic" class="waveDown svelte-1uha8ag" style="width: 100%; user-select: none; -webkit-user-drag: none"/> <h1 style="padding: 20px;" class="svelte-1uha8ag">Ready to submit?</h1> <p class="svelte-1uha8ag">Then submit now! Submissions close on March 15th at 11:59PM Eastern Time</p> <button class="svelte-1uha8ag">Submit Work</button><br class="svelte-1uha8ag"/> `);
+    })}>Sugar Rush Bonuses</h2> <div id="sugarGrid" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Spend over 12 hours on your project</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Have your project work fully on mobile and desktop. Your responsive design should work well.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Make a card for someone in Hack Club! Include a picture in the slack channel of you sending them the card.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Use a web-framework you've never learned or used before!</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+2 Hearts</h3> <p class="svelte-1uha8ag">Participate in a demo and get approved by staff for this bonus. Demos will be announced in the slack channel. You can only get this bonus once for an individual project.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+3 Hearts</h3> <p class="svelte-1uha8ag">Exceptional quality project. This sugar rush is awarded by staff only to impressive and well-built projects. You do not need to list this on your README.</p></div></div> <p class="svelte-1uha8ag">More may be added in the future. Check back here periodically!</p></div> <div id="submit" class="svelte-1uha8ag"><img${attr("src", `${stringify(base)}/images/wave3.png`)} alt="Wave graphic" class="waveDown svelte-1uha8ag" style="width: 100%; user-select: none; -webkit-user-drag: none"/> <h1 style="padding: 20px;" class="svelte-1uha8ag">Ready to submit?</h1> `);
+    {
+      $$renderer2.push("<!--[!-->");
+      $$renderer2.push(`<p class="svelte-1uha8ag">${escape_html(submissionMessage)}</p>`);
+    }
+    $$renderer2.push(`<!--]--> `);
     {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<img${attr("src", `${stringify(base)}/images/envelope.png`)} alt="Envelope" style="max-width: 500px; transform: rotate(3deg);" class="svelte-1uha8ag"/>`);

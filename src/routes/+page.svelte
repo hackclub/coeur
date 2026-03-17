@@ -31,6 +31,30 @@
             mobileFactor = 1;
         }
     })
+
+    let submissionsOpen = $state(false);
+    let submissionMessage = $state("");
+    onMount(async function() {
+        let raw = await fetch("https://raw.githubusercontent.com/lynn89-eefje/coeur-database/refs/heads/main/v2.json");
+        let json = await raw.json();
+        console.log(json);
+
+        if (json.submission_status == 1) {
+            submissionsOpen = true;
+            submissionMessage = `Then submit now! Submissions close on ${json.end_date}`
+        }
+        else if (json.submission_status == 0) {
+            if (json.channel_members >= 200) {
+                submissionMessage = "Submissions should open soon! Check back here or look out for updates on our Slack channel (#coeur)"
+            }
+            else {
+                submissionMessage = `Submissions for Version 2 will open when we reach 200 channel members for our Slack channel! We're currently around ${json.channel_members}/200!`
+            }
+        }
+        else {
+            submissionMessage = "Submissions have now closed!"
+        }
+    })
 </script>
 <svelte:head>
     <title>Coeur</title>
@@ -327,8 +351,13 @@
     <img src="{base}/images/wave3.png" alt="Wave graphic" class="waveDown" style="width: 100%; user-select: none; -webkit-user-drag: none" />
 
     <h1 style="padding: 20px;">Ready to submit?</h1>
-    <p>Then submit now! Submissions close on March 15th at 11:59PM Eastern Time</p>
+    {#if submissionsOpen}
+    <p>{submissionMessage}</p>
     <button onclick={function() {window.location.href = "https://submit.hackclub.com/coeur"}}>Submit Work</button><br>
+    {:else}
+    <p>{submissionMessage}</p>
+    {/if}
+    
     {#if mobile == ""}
     <img src="{base}/images/envelope.png" alt="Envelope" style="max-width: 500px; transform: rotate(3deg);"/>
     {:else}
