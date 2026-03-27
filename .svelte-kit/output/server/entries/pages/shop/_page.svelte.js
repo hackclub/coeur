@@ -10,6 +10,7 @@ let products = [
     "desc": "$10 USD for a heart themed plushie, or heart themed plushies! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
     "img": "plushie",
     "grant": true,
+    "stocked": false,
     "id": 0
   },
   {
@@ -18,30 +19,34 @@ let products = [
     "desc": "$10 USD for heart themed stationary! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
     "img": "pens",
     "grant": true,
+    "stocked": false,
     "id": 1
   },
   {
-    "name": "Lamp",
-    "hearts": 5,
-    "desc": "$25 USD for heart themed lamps! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
-    "img": "lamp",
-    "grant": true,
+    "name": "Sticker Sheet",
+    "hearts": 6,
+    "desc": "More details soon...",
+    "img": "soon",
+    "grant": false,
+    "stocked": false,
     "id": 2
   },
   {
-    "name": "Candy",
-    "hearts": 5,
-    "desc": "$25 USD for heart themed candy (lollipops, gummies, conversation hearts, and more are included in this)! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
-    "img": "candy",
-    "grant": true,
-    "id": 3
-  },
-  {
     "name": "Orpheus x Heidi Sweatshirt",
-    "hearts": 13,
+    "hearts": 16,
     "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding! Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
     "img": "sweatshirt",
     "grant": false,
+    "stocked": false,
+    "id": 3
+  },
+  {
+    "name": "Sugar Rush Sweatshirt",
+    "hearts": 16,
+    "desc": "This is what happens when Orpheus is on a sugar rush. Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
+    "img": "sweatshirt2",
+    "grant": false,
+    "stocked": false,
     "id": 4
   }
 ];
@@ -58,18 +63,26 @@ function _page($$renderer, $$props) {
         $$renderer4.push(`<title>Shop | Coeur</title>`);
       });
     });
-    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>Welcome to the shop for Version 1 of <span translate="no" class="svelte-a8yt2h">Cœur</span>! Prices and the catalog of items below should be confirmed and you can now purchase items! Do note that prices and the catalog of items may change for Version 2.</p> <p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
+    $$renderer2.push(`<div id="background" class="svelte-a8yt2h"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-a8yt2h"/></div> <div id="title" class="svelte-a8yt2h"><h1 class="svelte-a8yt2h"${attr_style("", { "margin-top": "50px", "font-size": "50px" })}>SHOP</h1> <p class="svelte-a8yt2h"${attr_style("", { "margin-bottom": "10px" })}>Welcome to the shop! Note that prices may fluctuate, as this is a work in progress.</p> <p class="svelte-a8yt2h"><button class="svelte-a8yt2h">Return Home</button></p></div> <div id="content" class="svelte-a8yt2h"><!--[-->`);
     const each_array = ensure_array_like(products);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let x = each_array[$$index];
-      $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)} alt="Boy holding plushie" class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> <h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
+      $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)}${attr("alt", x.name)} class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> <h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
       if (cart[x.id] > 0) {
         $$renderer2.push("<!--[-->");
         $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
       } else {
         $$renderer2.push("<!--[!-->");
       }
-      $$renderer2.push(`<!--]--></h3> <p class="svelte-a8yt2h"><button${attr_class("purchase svelte-a8yt2h", void 0, { "invisible": cart[x.id] == 0 })} translate="no">-</button><button class="purchase svelte-a8yt2h" translate="no">+</button></p> <p class="svelte-a8yt2h">${escape_html(x.desc)}</p> `);
+      $$renderer2.push(`<!--]--></h3> `);
+      if (x.stocked) {
+        $$renderer2.push("<!--[-->");
+        $$renderer2.push(`<p class="svelte-a8yt2h"><button${attr_class("purchase svelte-a8yt2h", void 0, { "invisible": cart[x.id] == 0 })} translate="no">-</button><button class="purchase svelte-a8yt2h" translate="no">+</button></p>`);
+      } else {
+        $$renderer2.push("<!--[!-->");
+        $$renderer2.push(`<p class="outOfStock svelte-a8yt2h"><i class="svelte-a8yt2h"><em class="svelte-a8yt2h">This item is not currently in stock</em></i></p>`);
+      }
+      $$renderer2.push(`<!--]--> <p class="svelte-a8yt2h">${escape_html(x.desc)}</p> `);
       if (x.grant) {
         $$renderer2.push("<!--[-->");
         $$renderer2.push(`<span class="hcb svelte-a8yt2h">HCB Grant</span>`);

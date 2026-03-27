@@ -50,7 +50,6 @@ declare module '$env/static/private' {
 	export const npm_config_noproxy: string;
 	export const HUGO_ROOT: string;
 	export const HOME: string;
-	export const OLDPWD: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const ORYX_ENV_TYPE: string;
 	export const NVM_BIN: string;
@@ -209,7 +208,6 @@ declare module '$env/dynamic/private' {
 		npm_config_noproxy: string;
 		HUGO_ROOT: string;
 		HOME: string;
-		OLDPWD: string;
 		TERM_PROGRAM_VERSION: string;
 		ORYX_ENV_TYPE: string;
 		NVM_BIN: string;

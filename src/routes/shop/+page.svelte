@@ -190,6 +190,10 @@
             box-shadow: 0px 0px 10px 8px rgb(218, 119, 176);
         }
     }
+
+    .outOfStock {
+        text-decoration-line: underline;
+    }
 </style>
 <svelte:window bind:innerWidth={charX}></svelte:window>
 <div id="background">
@@ -197,16 +201,20 @@
 </div>
 <div id="title">
     <h1 style:margin-top=50px style:font-size=50px>SHOP</h1>
-    <p style:margin-bottom=10px>Welcome to the shop for Version 1 of <span translate="no">Cœur</span>! Prices and the catalog of items below should be confirmed and you can now purchase items! Do note that prices and the catalog of items may change for Version 2.</p>
+    <p style:margin-bottom=10px>Welcome to the shop! Note that prices may fluctuate, as this is a work in progress.</p>
     <p><button onclick={function() {window.location.href = base + "/"}}>Return Home</button></p>
 </div>
 <div id="content">
 {#each products as x}
     <div class:purchased={cart[x.id] > 0}>
-        <img src="{base}/images/shop/{x.img}.png" alt="Boy holding plushie" />
+        <img src="{base}/images/shop/{x.img}.png" alt="{x.name}" />
         <h2>{x.name}</h2>
         <h3 translate="no"><span class="material-symbols-outlined" translate="no">favorite</span> {x.hearts} {#if cart[x.id] > 0}<i>(x {cart[x.id]})</i>{/if}</h3>
-        <p><button class="purchase" class:invisible={cart[x.id] == 0} translate="no" onclick={function() {modifyCart(0, x.id)}}>-</button><button class="purchase" translate="no"  onclick={function() {modifyCart(1, x.id)}}>+</button></p>
+        {#if x.stocked}
+            <p><button class="purchase" class:invisible={cart[x.id] == 0} translate="no" onclick={function() {modifyCart(0, x.id)}}>-</button><button class="purchase" translate="no"  onclick={function() {modifyCart(1, x.id)}}>+</button></p>
+        {:else}
+            <p class="outOfStock"><i><em>This item is not currently in stock</em></i></p>
+        {/if}
         <p>{x.desc}</p>
         {#if x.grant}<span class="hcb">HCB Grant</span>{/if}
     </div>

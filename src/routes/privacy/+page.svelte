@@ -81,19 +81,15 @@
     <h2 style:margin-bottom=20px><span translate="no">Cœur</span> is dedicated to keeping your personal information secure and safe, and committed to having no data breach incidents. Below are our privacy policies for handling your data.</h2>
     <div>
         <h3>Identity Vault Verification</h3>
-        <p>Identity Vault will be used to verify your eligibility. No staff member outside HCB's operations team can directly access your data in the Identity Vault at <a href="https://auth.hackclub.com">auth.hackclub.com</a>. <span translate="no">Cœur</span> staff will only receive your full legal name, email, and eligibility to participate, outside information that we request from you on your submission form.</p>
+        <p>Identity Vault will be used to verify your eligibility. No staff member outside HCB's operations team can directly access your data in the Identity Vault at <a href="https://auth.hackclub.com">auth.hackclub.com</a>. <span translate="no">Cœur</span> staff will only receive your full legal name, email, eligibility to participate, and outside information that we request from you on your submission form.</p>
     </div>
     <div>
         <h3>Authorized Access to Information</h3>
-        <p>All individuals that have access to your submission data and Identity Vault information are under NDA. This includes all staff for <span translate="no">Cœur</span>.</p>
+        <p>All individuals that have access to your submission data and Identity Vault information are under NDA. This includes all staff for <span translate="no">Cœur</span>. No public API, behind auth or not, will contain PII (personally identifiable information), which includes emails, preferred names, legal names, and shipping addresses. All PII will be securely stored on Airtable, Fillout, or on a local computer.</p>
     </div>
     <div>
         <h3>Usage of Artificial Intelligence</h3>
-        <p>No PII (personally identifiable information), which includes emails, preferred names, legal names, and shipping addresses, will be given to any publically available AI model or platform. Statistics such as coding hours or heart balances may be given to a publically available AI model or platform.</p>
-    </div>
-    <div>
-        <h3>APIs</h3>
-        <p>No public API, behind auth or not, will contain PII (personally identifiable information), which includes emails, preferred names, legal names, and shipping addresses. All PII will be securely stored on Airtable, Fillout, or on a local computer.</p>
+        <p>No PII (personally identifiable information), which includes preferred names, legal names, and shipping addresses, will be given to any publically available AI model or platform. Statistics such as coding hours or heart balances, as well as publically available information such as usernames or Slack IDs, may be given to a publically available AI model or platform.</p>
     </div>
 </div>
 <Footer />

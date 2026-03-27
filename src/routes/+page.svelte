@@ -277,6 +277,7 @@
     <div>
         <a href="https://hacklyn.city/orpheus"><img translate="no" src="{base}/images/orpheusCard.png" alt="Demo e-card" style:max-width=90% style:transform="rotate(2deg)"/></a>
         <p>Check out this example! <i>(Click on the image)</i></p>
+        <p><button>More Resources</button></p>
     </div>
 </div> 
 <div id="ws">
@@ -328,10 +329,10 @@
             <h3>+1 Heart</h3>
             <p>Make a card for someone in Hack Club! Include a picture in the slack channel of you sending them the card.</p>
         </div>
-        <div>
+        <!--<div>
             <h3>+1 Heart</h3>
             <p>Full usability through keyboard. Users should be able to fully control what pages they are on without having to use buttons or elements on the UI.</p>
-        </div>
+        </div>-->
         <div>
             <h3>+1 Heart</h3>
             <p>Use a web-framework you've never learned or used before!</p>
