@@ -50,6 +50,36 @@
     })
     let total = $state("Loading...");
 
+    let balances = $state({})
+    onMount(async () => {
+        let raw = await fetch("https://raw.githubusercontent.com/lynn89-eefje/coeur-database/refs/heads/main/purchases.json");
+        let purchases = await raw.json();
+        let raw2 = await fetch("https://raw.githubusercontent.com/lynn89-eefje/coeur-database/refs/heads/main/submissions.json");
+        let profits = await raw2.json();
+
+        for (let i = 0; i < profits.length; i++) {
+            if (balances[profits[i].slack_id] == null) {
+                balances[profits[i].slack_id] = profits[i].hearts;
+            }
+            
+        }
+        for (let i = 0; i < purchases.length; i++) {
+            balances[purchases[i].slack_id] -= purchases[i].payment;
+        }
+        console.log(balances);
+    })
+
+    let slackID = $state("");
+    let invalidBalance = $state(false);
+    function checkBalance() {
+        if (balances[slackID] >= total) {
+            window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`;
+        }
+        else {
+            invalidBalance = true;
+        }
+    }
+
 </script>
 <svelte:head>
     <title>Shop | Coeur</title>
@@ -57,13 +87,6 @@
 <style>
     h1, p {
         text-align: center;
-    }
-    button {
-        background-color: rgb(104, 35, 89);
-    }
-    button:hover {
-        background-color: white;
-        color: rgb(104, 35, 89);
     }
     #background {
         z-index: -1;
@@ -115,8 +138,12 @@
 </div>
 <div id="title">
     <h1 style:margin-top=50px class:mobile={Mobile == "Mobile"}>CONFIRMATION</h1>
-    <p style:margin-bottom=10px>Please review your order. If all the details below are correct, you may proceed.</p>
-    <p><button onclick={function() {window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`}}>Continue</button></p>
+    <p style:margin-bottom=10px>Please review your order and provide your Slack ID in order to proceed.</p>
+    {#if invalidBalance}<h2 style:text-align="center">Your balance is invalid</h2>{/if}
+    <!--<p><button style:margin-right=5px onclick={function() {window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`}}>Proceed</button> <button style:margin-left=5px onclick={function() {window.location.href = `${base}/shop`}}>Return</button></p>-->
+    <form onsubmit={checkBalance}>
+        <p><input bind:value={slackID} style:border-radius=15px style:padding=10px type="text" min=11 max=11 placeholder="Slack ID"></p>
+    </form>
 </div>
 <div id="content">
 
@@ -126,7 +153,6 @@
 {/each}
 <p>______________</p>
 <h1>{total} total hearts</h1>
-<p>You should make sure that you can afford this total based on the amount of hearts that you've earned from projects.</p>
 {#if Mobile == ""}
 <img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 35%; height: auto; display: block; margin: 0 auto;" />
 {:else}

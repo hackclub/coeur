@@ -8,7 +8,6 @@ function _page($$renderer, $$props) {
     let Mobile = "";
     let slackID = "";
     let totalHearts = 0;
-    let totalUserHearts = 0;
     let rawOrder = "";
     let cart = [];
     head("czqqvv", $$renderer2, ($$renderer3) => {
@@ -19,7 +18,7 @@ function _page($$renderer, $$props) {
     $$renderer2.push(`<div id="background" class="svelte-czqqvv"><img${attr("src", `${stringify(base)}/images/landing${stringify(Mobile)}/1.png`)} alt="Heart background" class="svelte-czqqvv"/></div> <div id="title" class="svelte-czqqvv"><h1${attr_class("svelte-czqqvv", void 0, { "mobile": Mobile == "Mobile" })}${attr_style("", { "margin-top": "50px" })}>PROCESS ORDER</h1> <form class="svelte-czqqvv"${attr_style("", { "margin-top": "30px" })}><input${attr("value", slackID)} required type="text" placeholder="Slack ID"/><br/> <input${attr("value", rawOrder)} required type="text" placeholder="Order"${attr_style("", { "margin-top": "15px" })}/><br/> <input type="submit" class="svelte-czqqvv"${attr_style("", { "margin-top": "15px" })}/></form></div> <div id="content" class="svelte-czqqvv"><h2 class="svelte-czqqvv">User</h2> <p class="svelte-czqqvv">${escape_html(slackID)}</p> `);
     if (cart.length > 0) {
       $$renderer2.push("<!--[-->");
-      $$renderer2.push(`<h3${attr_style("", { "font-family": "Montserrat" })}>${escape_html(totalHearts)} hearts are needed for this purchase. User has ${escape_html(totalUserHearts)}.</h3> `);
+      $$renderer2.push(`<h3${attr_style("", { "font-family": "Montserrat" })}>${escape_html(totalHearts)} hearts are needed for this purchase. User has ${escape_html("no balance")}.</h3> `);
       {
         $$renderer2.push("<!--[-->");
         $$renderer2.push(`<h3${attr_style("", { "font-family": "Montserrat" })}>Thir purchase is valid.</h3>`);

@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { base } from "$app/paths";
     import Footer from "$lib/footer.svelte";
+    import { slide } from "svelte/transition";
 
     let mobile = $state("");
     let charY = $state(0);
@@ -55,6 +56,8 @@
             submissionMessage = "Submissions have now closed!"
         }
     })
+
+    let resources = $state(false);
 </script>
 <svelte:head>
     <title>Coeur</title>
@@ -256,6 +259,24 @@
             margin: 20px;
         }
     }
+
+    #guide {
+        background-color: rgb(255, 66, 161);
+        padding: 20px;
+        text-align: center;
+        div {
+            background-color: rgb(122, 29, 72);
+            margin: 30px;
+            padding: 20px;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border: 6px solid rgb(255, 216, 253);
+
+            h2 {
+                margin-top: 10px;
+            }
+        }
+    }
 </style>
 <div id="landing">
     {#if mobile == ""}
@@ -277,9 +298,33 @@
     <div>
         <a href="https://hacklyn.city/orpheus"><img translate="no" src="{base}/images/orpheusCard.png" alt="Demo e-card" style:max-width=90% style:transform="rotate(2deg)"/></a>
         <p>Check out this example! <i>(Click on the image)</i></p>
-        <p><button>More Resources</button></p>
+        <p>{#if !resources}<button onclick={() => {if (resources) {resources = false;} else {resources = true;}}}>I need more guidance</button>{:else}<button onclick={() => {if (resources) {resources = false;} else {resources = true;}}}>I don't need more guidance</button>{/if}</p>
     </div>
 </div> 
+{#if resources}
+<div id="guide" transition:slide>
+    <div>
+        <h2>Step 1</h2>
+        <p>Every card, e-card or not, should start with the idea of who you're making it for or what you're making it about. There are so many different topics you could cover, and the range of people you can do is wider than you think! <strong><em>Take some time to envision your idea.</em></strong></p>
+        <p>If you're making it for a person, it doesn't have to be just for someone you love or even about the fact that you love said individual. Thinking about making it for a friend, or maybe even a sibling? Think about some experience or interest that both of you share, or that the person you're making it for would appreciate! There's a-lot of different approaches you can take when it comes to theming your card around that. If it's a movie or book, maybe you want to incorporate visuals, graphics, and animations from that! If it's a video game, you could even emulate scenes from that game and build that into your card.</p>
+        <p>Making it about a certain topic or thing? Make sure that your card isn't just about how you find it cool or the connection you have with it, but try to address the card to that thing! It's a card, afterall. <strong><em>You can have fun with this; these projects don't have to be dead serious :P</em></strong></p>
+    </div>
+    <div>
+        <h2>Step 2</h2>
+        <p><strong><em>If you've narrowed down your idea, now you should really think about the specifics of how this will work and what features you want to make.</em></strong> This is also a good time to make sure your idea would meet the <a href="{base}/requirements">requirements</a>.</p>
+        <p>What you do here really depends on your preferences or what works better for you. One approach could be to use Figma, Canva, or another tool to visualize what your card will look like. Alternatively, you could just get started on some of the art that you'll implement in your card. This might also be a good time to find tutorials and references on specific features that you have planned.</p>
+        <p><strong><em>It's ok to find tutorials and references for specific features you have in mind and the like; however, you shouldn't be finding tutorials on how to make e-cards in general. E-cards are meant to be creative and personal; the e-card concept in itself should be the most original part of your project!</em></strong></p>
+    </div>
+    <div>
+        <h2>Step 3</h2>
+        <p>Demo what you've done for your project so far! We'll be running a few demos in our Slack channel during the duration of the program, and you can participate in them to show off your progress and get bonuses! Through this, staff members can provide feedback on your idea and the current vision for your card. If there isn't an active demo, you can still ask for feedback in the channel!</p>
+    </div>
+    <div>
+        <h2>Step 4</h2>
+        <p>Start fleshing out your project! As you gradually progress, you can continue to demo your work for feedback! There's no specific way in which you need to address this step; the frameworks and languages you use, the theme your card is about, and the features you plan to add are all supposed to be unique to what you want from your project! We're here to help you along the way!</p>
+    </div>
+</div>
+{/if}
 <div id="ws">
     <img class="waveDown" src="{base}/images/wave1.png" alt="Wave graphic" style:width="100%" style:user-select="none" style:-webkit-user-drag="none"/>
     <div id="grid" class:mobile={mobile != ""}>

@@ -14,7 +14,7 @@
     let cart = $state([]);
     function process() {
         totalHearts = 0;
-        totalUserHearts = 0;
+        totalUserHearts = balances[slackID];
         cart = [];
         let newOne = []
         let newPlace = "";
@@ -32,7 +32,7 @@
                             newOne.push("");
                         }
                         else {
-                            newOne.push(`This product should cost ${products[i].hearts} hearts`);
+                            newOne.push(`This product should cost ${products[i].hearts} hearts under current pricing`);
                         }
                     }
                 }
@@ -54,12 +54,13 @@
             totalHearts += (newOne[2]*newOne[1]);
             cart.push(newOne);
         }
-        console.log(cart);
+        //console.log(cart);
         total = 0;
         for (let i = 0; i < cart.length; i++) {
             total += (parseInt(cart[i][1]) * parseInt(cart[i][2]));
         }
-        user();
+        //user();
+        console.log(totalUserHearts);
     }
 
     async function user() {
@@ -72,6 +73,25 @@
             }
         }
     }
+
+    let balances = $state({});
+    onMount(async () => {
+        let raw = await fetch("https://raw.githubusercontent.com/lynn89-eefje/coeur-database/refs/heads/main/purchases.json");
+        let purchases = await raw.json();
+        let raw2 = await fetch("https://raw.githubusercontent.com/lynn89-eefje/coeur-database/refs/heads/main/submissions.json");
+        let profits = await raw2.json();
+
+        for (let i = 0; i < profits.length; i++) {
+            if (balances[profits[i].slack_id] == null) {
+                balances[profits[i].slack_id] = profits[i].hearts;
+            }
+            
+        }
+        for (let i = 0; i < purchases.length; i++) {
+            balances[purchases[i].slack_id] -= purchases[i].payment;
+        }
+        console.log(balances);
+    })
 
     $effect(function() {
         if (charX <= 900) {
@@ -176,7 +196,7 @@
 <h2>User</h2>
 <p>{slackID}</p>
 {#if cart.length > 0}
-<h3 style:font-family="Montserrat">{totalHearts} hearts are needed for this purchase. User has {totalUserHearts}.</h3>
+<h3 style:font-family="Montserrat">{totalHearts} hearts are needed for this purchase. User has {totalUserHearts || "no balance"}.</h3>
 {#if totalUserHearts >= totalHearts}
 <h3 style:font-family="Montserrat">Thir purchase is valid.</h3>
 {:else}

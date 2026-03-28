@@ -36,7 +36,16 @@ function _page($$renderer, $$props) {
     }
     $$renderer2.push(`<!--]--> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/2.png`)} id="titleLogo" translate="no" alt="Title" class="graphic svelte-1uha8ag"${attr_style("", {
       transform: `translateY(${stringify(charY * 0.5 * mobileFactor)}px)`
-    })}/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/3.png`)} class="graphic svelte-1uha8ag" alt="Orpheus and Heidi"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/4.png`)} class="graphic wave svelte-1uha8ag" alt="Pink Wave"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/5.png`)} class="graphic svelte-1uha8ag" alt="Orpheus's Hands"/></div> <div id="ys" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h1 class="svelte-1uha8ag"${attr_style("", { "font-size": "50px" })}>Make E-Cards</h1> <h3 class="svelte-1uha8ag">E-Cards should be viewable on the web and engaging!</h3> <button class="svelte-1uha8ag"${attr_style("", { "margin-top": "20px", width: "60%" })}>View requirements for submissions</button></div> <div class="svelte-1uha8ag"><a href="https://hacklyn.city/orpheus" class="svelte-1uha8ag"><img translate="no"${attr("src", `${stringify(base)}/images/orpheusCard.png`)} alt="Demo e-card" class="svelte-1uha8ag"${attr_style("", { "max-width": "90%", transform: "rotate(2deg)" })}/></a> <p class="svelte-1uha8ag">Check out this example! <i class="svelte-1uha8ag">(Click on the image)</i></p> <p class="svelte-1uha8ag"><button class="svelte-1uha8ag">More Resources</button></p></div></div> <div id="ws" class="svelte-1uha8ag"><img class="waveDown svelte-1uha8ag"${attr("src", `${stringify(base)}/images/wave1.png`)} alt="Wave graphic"${attr_style("", {
+    })}/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/3.png`)} class="graphic svelte-1uha8ag" alt="Orpheus and Heidi"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/4.png`)} class="graphic wave svelte-1uha8ag" alt="Pink Wave"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/5.png`)} class="graphic svelte-1uha8ag" alt="Orpheus's Hands"/></div> <div id="ys" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h1 class="svelte-1uha8ag"${attr_style("", { "font-size": "50px" })}>Make E-Cards</h1> <h3 class="svelte-1uha8ag">E-Cards should be viewable on the web and engaging!</h3> <button class="svelte-1uha8ag"${attr_style("", { "margin-top": "20px", width: "60%" })}>View requirements for submissions</button></div> <div class="svelte-1uha8ag"><a href="https://hacklyn.city/orpheus" class="svelte-1uha8ag"><img translate="no"${attr("src", `${stringify(base)}/images/orpheusCard.png`)} alt="Demo e-card" class="svelte-1uha8ag"${attr_style("", { "max-width": "90%", transform: "rotate(2deg)" })}/></a> <p class="svelte-1uha8ag">Check out this example! <i class="svelte-1uha8ag">(Click on the image)</i></p> <p class="svelte-1uha8ag">`);
+    {
+      $$renderer2.push("<!--[-->");
+      $$renderer2.push(`<button class="svelte-1uha8ag">I need more guidance</button>`);
+    }
+    $$renderer2.push(`<!--]--></p></div></div> `);
+    {
+      $$renderer2.push("<!--[!-->");
+    }
+    $$renderer2.push(`<!--]--> <div id="ws" class="svelte-1uha8ag"><img class="waveDown svelte-1uha8ag"${attr("src", `${stringify(base)}/images/wave1.png`)} alt="Wave graphic"${attr_style("", {
       width: "100%",
       "user-select": "none",
       "-webkit-user-drag": "none"
