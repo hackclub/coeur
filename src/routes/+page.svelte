@@ -275,6 +275,16 @@
             h2 {
                 margin-top: 10px;
             }
+
+            img {
+                max-width: 70%;
+                border-radius: 20px;
+                margin-top: 30px;
+                border: 5px solid pink;
+            }
+            h3 {
+                text-decoration-line: underline;
+            }
         }
     }
 </style>
@@ -308,6 +318,9 @@
         <p>Every card, e-card or not, should start with the idea of who you're making it for or what you're making it about. There are so many different topics you could cover, and the range of people you can do is wider than you think! <strong><em>Take some time to envision your idea.</em></strong></p>
         <p>If you're making it for a person, it doesn't have to be just for someone you love or even about the fact that you love said individual. Thinking about making it for a friend, or maybe even a sibling? Think about some experience or interest that both of you share, or that the person you're making it for would appreciate! There's a-lot of different approaches you can take when it comes to theming your card around that. If it's a movie or book, maybe you want to incorporate visuals, graphics, and animations from that! If it's a video game, you could even emulate scenes from that game and build that into your card.</p>
         <p>Making it about a certain topic or thing? Make sure that your card isn't just about how you find it cool or the connection you have with it, but try to address the card to that thing! It's a card, afterall. <strong><em>You can have fun with this; these projects don't have to be dead serious :P</em></strong></p>
+        <h3 style:font-family="Montserrat, Futura">This was a card submitted to V1!</h3>
+        <p>This card is a great exemplar of having a creative and personal idea! Based on the video game <i>Oneshot</i>, the card emulates opening up the game and reading through the dialogue; the dialogue in itself makes up the message of the card! You can check it out <a href="https://toemmyfrom.miniaturity.com">here</a></p>.
+        <img src="/images/guide/oneshot.png" alt="Example card"/>
     </div>
     <div>
         <h2>Step 2</h2>
@@ -318,11 +331,14 @@
     <div>
         <h2>Step 3</h2>
         <p>Demo what you've done for your project so far! We'll be running a few demos in our Slack channel during the duration of the program, and you can participate in them to show off your progress and get bonuses! Through this, staff members can provide feedback on your idea and the current vision for your card. If there isn't an active demo, you can still ask for feedback in the channel!</p>
+        <img src="/images/guide/demos.png" style:border=none alt="Examples of project demos">
     </div>
     <div>
         <h2>Step 4</h2>
         <p>Start fleshing out your project! As you gradually progress, you can continue to demo your work for feedback! There's no specific way in which you need to address this step; the frameworks and languages you use, the theme your card is about, and the features you plan to add are all supposed to be unique to what you want from your project! We're here to help you along the way!</p>
+        <img src="images/guide/flesh.png" alt="Working on assets for a project" />
     </div>
+    <h2>Have more questions? Reach out in our Slack channel <i>(#coeur)</i>!</h2>
 </div>
 {/if}
 <div id="ws">

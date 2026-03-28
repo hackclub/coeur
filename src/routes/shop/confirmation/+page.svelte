@@ -2,6 +2,7 @@
     import { base } from "$app/paths";
     import { onMount } from 'svelte';
     import { products } from "$lib/shop.js";
+    import { fly } from "svelte/transition"
 
     let Mobile = $state("");
     let charX = $state(0);
@@ -72,6 +73,7 @@
     let slackID = $state("");
     let invalidBalance = $state(false);
     function checkBalance() {
+        event.preventDefault();
         if (balances[slackID] >= total) {
             window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`;
         }
@@ -130,6 +132,17 @@
         }
     }
 
+    #invalidBalance {
+        position: fixed;
+        background-color: rgb(139, 68, 113);
+        border-radius: 30px;
+        padding: 20px;
+        transform: translate(-50%, 0%);
+        bottom: 30px;
+        left: 50%;
+        box-shadow: 0px 0px 20px 10px pink;
+    }
+
 
 </style>
 <svelte:window bind:innerWidth={charX}></svelte:window>
@@ -139,7 +152,6 @@
 <div id="title">
     <h1 style:margin-top=50px class:mobile={Mobile == "Mobile"}>CONFIRMATION</h1>
     <p style:margin-bottom=10px>Please review your order and provide your Slack ID in order to proceed.</p>
-    {#if invalidBalance}<h2 style:text-align="center">Your balance is invalid</h2>{/if}
     <!--<p><button style:margin-right=5px onclick={function() {window.location.href = `https://forms.hackclub.com/t/9KmPUpin2Vus?order=${rawOrder}&total=${total}`}}>Proceed</button> <button style:margin-left=5px onclick={function() {window.location.href = `${base}/shop`}}>Return</button></p>-->
     <form onsubmit={checkBalance}>
         <p><input bind:value={slackID} style:border-radius=15px style:padding=10px type="text" min=11 max=11 placeholder="Slack ID"></p>
@@ -159,4 +171,9 @@
 <img id="heidiEnvelope" src="{base}/images/heidiEnvelope.png" alt="Heidi in an envelope" style="width: 65%; height: auto; display: block; margin: 0 auto;" />
 {/if}
 </div>
+{#if invalidBalance}
+<div id="invalidBalance" transition:fly={{y:200}}>
+    <p>Your balance is invalid. Double check the Slack ID that you've inputted. If you think this is a mistake, contact us in our Slack channel.</p>
+</div>
+{/if}
 <Footer />
