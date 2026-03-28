@@ -38,6 +38,7 @@ let products = [
     "img": "sweatshirt",
     "grant": false,
     "stocked": true,
+    "info": "This is a white sweatshirt available in S, M, L, and XL adult sizes",
     "id": 3
   },
   {
@@ -47,6 +48,7 @@ let products = [
     "img": "sweatshirt2",
     "grant": false,
     "stocked": false,
+    "info": "This is a pale pink sweatshirt available in S, M, L, and XL adult sizes",
     "id": 4
   }
 ];
@@ -86,6 +88,13 @@ function _page($$renderer, $$props) {
       if (x.grant) {
         $$renderer2.push("<!--[-->");
         $$renderer2.push(`<span class="hcb svelte-a8yt2h">HCB Grant</span>`);
+      } else {
+        $$renderer2.push("<!--[!-->");
+      }
+      $$renderer2.push(`<!--]--> `);
+      if (x.info != null) {
+        $$renderer2.push("<!--[-->");
+        $$renderer2.push(`<div class="info svelte-a8yt2h"><p class="svelte-a8yt2h">${escape_html(x.info)}</p></div>`);
       } else {
         $$renderer2.push("<!--[!-->");
       }

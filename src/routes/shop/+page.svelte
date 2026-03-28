@@ -143,6 +143,11 @@
             border: 10px solid rgb(250, 120, 176);
             box-shadow: 0px 0px 10px 10px rgba(185, 163, 167, 0.24);
         }
+        div.info {
+            background-color: rgb(168, 45, 92);
+            padding: 5px;
+            font-size: 15px;
+        }
     }
 
     #title {
@@ -217,6 +222,7 @@
         {/if}
         <p>{x.desc}</p>
         {#if x.grant}<span class="hcb">HCB Grant</span>{/if}
+        {#if x.info != null}<div class="info"><p>{x.info}</p></div>{/if}
     </div>
 {/each}
 </div>

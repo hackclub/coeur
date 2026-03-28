@@ -33,6 +33,7 @@ export let products = [
         "img": "sweatshirt",
         "grant": false,
         "stocked": true,
+        "info": "This is a white sweatshirt available in S, M, L, and XL adult sizes",
         "id": 3
     },
     {
@@ -42,6 +43,7 @@ export let products = [
         "img": "sweatshirt2",
         "grant": false,
         "stocked": false,
+        "info": "This is a pale pink sweatshirt available in S, M, L, and XL adult sizes",
         "id": 4
     }
 ]
