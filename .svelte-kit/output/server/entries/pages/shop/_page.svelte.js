@@ -32,24 +32,34 @@ let products = [
     "id": 2
   },
   {
+    "name": "Stamp Shirt",
+    "hearts": 15,
+    "desc": "Orpheus and Heidi on a stamp! This item gets unlocked when our Slack channel gets to 200 channel members!",
+    "img": "shirt",
+    "grant": false,
+    "stocked": false,
+    "info": "This is a cardinal red shirt available in XS, S, M, L, and XL adult sizes",
+    "id": 3
+  },
+  {
     "name": "Orpheus x Heidi Sweatshirt",
-    "hearts": 16,
+    "hearts": 17,
     "desc": "Featuring Orpheus and Heidi, the official Cœur sweatshirt with Hack Club branding! Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
     "img": "sweatshirt",
     "grant": false,
     "stocked": true,
     "info": "This is a white sweatshirt available in S, M, L, and XL adult sizes",
-    "id": 3
+    "id": 4
   },
   {
     "name": "Sugar Rush Sweatshirt",
-    "hearts": 16,
+    "hearts": 17,
     "desc": "This is what happens when Orpheus is on a sugar rush. This item gets unlocked when our Slack channel gets to 200 channel members!",
     "img": "sweatshirt2",
     "grant": false,
     "stocked": false,
     "info": "This is a pale pink sweatshirt available in S, M, L, and XL adult sizes",
-    "id": 4
+    "id": 5
   }
 ];
 function _page($$renderer, $$props) {
