@@ -85,7 +85,7 @@
     </div>
     <div>
         <h3>Authorized Access to Information</h3>
-        <p>All individuals that have access to your submission data and Identity Vault information are under NDA. This includes all staff for <span translate="no">Cœur</span>. No public API, behind auth or not, will contain PII (personally identifiable information), which includes emails, preferred names, legal names, and shipping addresses. All PII will be securely stored on Airtable, Fillout, or on a local computer. Any data stored locally will be deleted at the end of the event; only individuals under NDA will be storing or accessing information locally.</p>
+        <p>All individuals that have access to your submission data and Identity Vault information are under NDA. This includes all staff for <span translate="no">Cœur</span>. No public API, behind auth or not, will contain PII (personally identifiable information), which includes preferred names, legal names, and shipping addresses. All PII will be securely stored on Airtable, Fillout, or on a local computer. Any data stored locally will be deleted at the end of the event; only individuals under NDA will be storing or accessing information locally.</p>
     </div>
     <div>
         <h3>Usage of Artificial Intelligence</h3>
