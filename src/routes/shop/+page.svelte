@@ -147,6 +147,7 @@
             background-color: rgb(168, 45, 92);
             padding: 5px;
             font-size: 15px;
+            border: none;
         }
     }
 

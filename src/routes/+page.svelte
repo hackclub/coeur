@@ -326,7 +326,8 @@
         <h2>Step 2</h2>
         <p><strong><em>If you've narrowed down your idea, now you should really think about the specifics of how this will work and what features you want to make.</em></strong> This is also a good time to make sure your idea would meet the <a href="{base}/requirements">requirements</a>.</p>
         <p>What you do here really depends on your preferences or what works better for you. One approach could be to use Figma, Canva, or another tool to visualize what your card will look like. Alternatively, you could just get started on some of the art that you'll implement in your card. This might also be a good time to find tutorials and references on specific features that you have planned.</p>
-        <p><strong><em>It's ok to find tutorials and references for specific features you have in mind and the like; however, you shouldn't be finding tutorials on how to make e-cards in general. E-cards are meant to be creative and personal; the e-card concept in itself should be the most original part of your project!</em></strong></p>
+        <p><strong><em>It's ok to find tutorials and references for specific features you have in mind and the like; however, you shouldn't be finding tutorials on how to make e-cards in general, nor should your entire project be comprised of stuff you simply copied into your project without any modification. E-cards are meant to be creative and personal; the e-card concept in itself should be the most original part of your project!</em></strong></p>
+        <img src="/images/guide/tutorial.png" alt="Youtube tutorial" />
     </div>
     <div>
         <h2>Step 3</h2>
