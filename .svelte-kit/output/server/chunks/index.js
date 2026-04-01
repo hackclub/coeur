@@ -1,6 +1,32 @@
-import { e as escape_html, a as set_ssr_context, b as ssr_context, p as push, c as pop } from "./context.js";
 import { clsx as clsx$1 } from "clsx";
 import * as devalue from "devalue";
+var is_array = Array.isArray;
+var index_of = Array.prototype.indexOf;
+var includes = Array.prototype.includes;
+var array_from = Array.from;
+var define_property = Object.defineProperty;
+var get_descriptor = Object.getOwnPropertyDescriptor;
+var object_prototype = Object.prototype;
+var array_prototype = Array.prototype;
+var get_prototype_of = Object.getPrototypeOf;
+var is_extensible = Object.isExtensible;
+var has_own_property = Object.prototype.hasOwnProperty;
+const noop = () => {
+};
+function run_all(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    arr[i]();
+  }
+}
+function deferred() {
+  var resolve;
+  var reject;
+  var promise = new Promise((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+  return { promise, resolve, reject };
+}
 const DERIVED = 1 << 1;
 const EFFECT = 1 << 2;
 const RENDER_EFFECT = 1 << 3;
@@ -15,13 +41,14 @@ const DIRTY = 1 << 11;
 const MAYBE_DIRTY = 1 << 12;
 const INERT = 1 << 13;
 const DESTROYED = 1 << 14;
-const EFFECT_RAN = 1 << 15;
+const REACTION_RAN = 1 << 15;
+const DESTROYING = 1 << 25;
 const EFFECT_TRANSPARENT = 1 << 16;
 const EAGER_EFFECT = 1 << 17;
 const HEAD_EFFECT = 1 << 18;
 const EFFECT_PRESERVED = 1 << 19;
 const USER_EFFECT = 1 << 20;
-const WAS_MARKED = 1 << 15;
+const WAS_MARKED = 1 << 16;
 const REACTION_IS_UPDATING = 1 << 21;
 const ASYNC = 1 << 22;
 const ERROR_VALUE = 1 << 23;
@@ -32,8 +59,14 @@ const STALE_REACTION = new class StaleReactionError extends Error {
   message = "The reaction that called `getAbortSignal()` was re-run or destroyed";
 }();
 const COMMENT_NODE = 8;
+function lifecycle_outside_component(name) {
+  {
+    throw new Error(`https://svelte.dev/e/lifecycle_outside_component`);
+  }
+}
 const HYDRATION_START = "[";
 const HYDRATION_START_ELSE = "[!";
+const HYDRATION_START_FAILED = "[?";
 const HYDRATION_END = "]";
 const HYDRATION_ERROR = {};
 const ELEMENT_IS_NAMESPACED = 1;
@@ -77,6 +110,22 @@ const PASSIVE_EVENTS = ["touchstart", "touchmove"];
 function is_passive_event(name) {
   return PASSIVE_EVENTS.includes(name);
 }
+const ATTR_REGEX = /[&"<]/g;
+const CONTENT_REGEX = /[&<]/g;
+function escape_html(value, is_attr) {
+  const str = String(value ?? "");
+  const pattern = is_attr ? ATTR_REGEX : CONTENT_REGEX;
+  pattern.lastIndex = 0;
+  let escaped = "";
+  let last = 0;
+  while (pattern.test(str)) {
+    const i = pattern.lastIndex - 1;
+    const ch = str[i];
+    escaped += str.substring(last, i) + (ch === "&" ? "&amp;" : ch === '"' ? "&quot;" : "&lt;");
+    last = i + 1;
+  }
+  return escaped + str.substring(last);
+}
 const replacements = {
   translate: /* @__PURE__ */ new Map([
     [true, "yes"],
@@ -88,8 +137,8 @@ function attr(name, value, is_boolean = false) {
     is_boolean = true;
   }
   if (value == null || !value && is_boolean) return "";
-  const normalized = name in replacements && replacements[name].get(value) || value;
-  const assignment = is_boolean ? "" : `="${escape_html(normalized, true)}"`;
+  const normalized = has_own_property.call(replacements, name) && replacements[name].get(value) || value;
+  const assignment = is_boolean ? `=""` : `="${escape_html(normalized, true)}"`;
   return ` ${name}${assignment}`;
 }
 function clsx(value) {
@@ -106,7 +155,7 @@ function to_class(value, hash, directives) {
     classname = classname ? classname + " " + hash : hash;
   }
   if (directives) {
-    for (var key in directives) {
+    for (var key of Object.keys(directives)) {
       if (directives[key]) {
         classname = classname ? classname + " " + key : key;
       } else if (classname.length) {
@@ -128,7 +177,7 @@ function to_class(value, hash, directives) {
 function append_styles(styles, important = false) {
   var separator = important ? " !important;" : ";";
   var css = "";
-  for (var key in styles) {
+  for (var key of Object.keys(styles)) {
     var value = styles[key];
     if (value != null && value !== "") {
       css += " " + key + ": " + value + separator;
@@ -247,6 +296,46 @@ https://svelte.dev/e/server_context_required`);
   error.name = "Svelte error";
   throw error;
 }
+var ssr_context = null;
+function set_ssr_context(v) {
+  ssr_context = v;
+}
+function getContext(key) {
+  const context_map = get_or_init_context_map();
+  const result = (
+    /** @type {T} */
+    context_map.get(key)
+  );
+  return result;
+}
+function setContext(key, context) {
+  get_or_init_context_map().set(key, context);
+  return context;
+}
+function get_or_init_context_map(name) {
+  if (ssr_context === null) {
+    lifecycle_outside_component();
+  }
+  return ssr_context.c ??= new Map(get_parent_context(ssr_context) || void 0);
+}
+function push(fn) {
+  ssr_context = { p: ssr_context, c: null, r: null };
+}
+function pop() {
+  ssr_context = /** @type {SSRContext} */
+  ssr_context.p;
+}
+function get_parent_context(ssr_context2) {
+  let parent = ssr_context2.p;
+  while (parent !== null) {
+    const context_map = parent.c;
+    if (context_map !== null) {
+      return context_map;
+    }
+    parent = parent.p;
+  }
+  return null;
+}
 function unresolved_hydratable(key, stack) {
   {
     console.warn(`https://svelte.dev/e/unresolved_hydratable`);
@@ -262,11 +351,16 @@ function get_render_context() {
 let als = null;
 let text_encoder;
 let crypto;
+const obfuscated_import = (module_name) => import(
+  /* @vite-ignore */
+  module_name
+);
 async function sha256(data) {
   text_encoder ??= new TextEncoder();
   crypto ??= globalThis.crypto?.subtle?.digest ? globalThis.crypto : (
     // @ts-ignore - we don't install node types in the prod build
-    (await import("node:crypto")).webcrypto
+    // don't use import('node:crypto') directly because static analysers will think we rely on node when we don't
+    (await obfuscated_import("node:crypto")).webcrypto
   );
   const hash_buffer = await crypto.subtle.digest("SHA-256", text_encoder.encode(data));
   return base64_encode(hash_buffer);
@@ -297,6 +391,16 @@ class Renderer {
    * @type {boolean}
    */
   #is_component_body = false;
+  /**
+   * If set, this renderer is an error boundary. When async collection
+   * of the children fails, the failed snippet is rendered instead.
+   * @type {{
+   * 	failed: (renderer: Renderer, error: unknown, reset: () => void) => void;
+   * 	transformError: (error: unknown) => unknown;
+   * 	context: SSRContext | null;
+   * } | null}
+   */
+  #boundary = null;
   /**
    * The type of string content that this renderer is accumulating.
    * @type {RendererType}
@@ -392,7 +496,17 @@ class Renderer {
       });
       promises.push(promise);
     }
+    promise.catch(noop);
+    this.promise = promise;
     return promises;
+  }
+  /**
+   * @param {(renderer: Renderer) => MaybePromise<void>} fn
+   */
+  child_block(fn) {
+    this.#out.push(BLOCK_OPEN);
+    this.child(fn);
+    this.#out.push(BLOCK_CLOSE);
   }
   /**
    * Create a child renderer. The child renderer inherits the state from the parent,
@@ -412,14 +526,75 @@ class Renderer {
     const result = fn(child);
     set_ssr_context(parent);
     if (result instanceof Promise) {
+      result.catch(noop);
+      result.finally(() => set_ssr_context(null)).catch(noop);
       if (child.global.mode === "sync") {
         await_invalid();
       }
-      result.catch(() => {
-      });
       child.promise = result;
     }
     return child;
+  }
+  /**
+   * Render children inside an error boundary. If the children throw and the API-level
+   * `transformError` transform handles the error (doesn't re-throw), the `failed` snippet is
+   * rendered instead. Otherwise the error propagates.
+   *
+   * @param {{ failed?: (renderer: Renderer, error: unknown, reset: () => void) => void }} props
+   * @param {(renderer: Renderer) => MaybePromise<void>} children_fn
+   */
+  boundary(props, children_fn) {
+    const child = new Renderer(this.global, this);
+    this.#out.push(child);
+    const parent_context = ssr_context;
+    if (props.failed) {
+      child.#boundary = {
+        failed: props.failed,
+        transformError: this.global.transformError,
+        context: parent_context
+      };
+    }
+    set_ssr_context({
+      ...ssr_context,
+      p: parent_context,
+      c: null,
+      r: child
+    });
+    try {
+      const result = children_fn(child);
+      set_ssr_context(parent_context);
+      if (result instanceof Promise) {
+        if (child.global.mode === "sync") {
+          await_invalid();
+        }
+        result.catch(noop);
+        child.promise = result;
+      }
+    } catch (error) {
+      set_ssr_context(parent_context);
+      const failed_snippet = props.failed;
+      if (!failed_snippet) throw error;
+      const result = this.global.transformError(error);
+      child.#out.length = 0;
+      child.#boundary = null;
+      if (result instanceof Promise) {
+        if (this.global.mode === "sync") {
+          await_invalid();
+        }
+        child.promise = /** @type {Promise<unknown>} */
+        result.then((transformed) => {
+          set_ssr_context(parent_context);
+          child.#out.push(Renderer.#serialize_failed_boundary(transformed));
+          failed_snippet(child, transformed, noop);
+          child.#out.push(BLOCK_CLOSE);
+        });
+        child.promise.catch(noop);
+      } else {
+        child.#out.push(Renderer.#serialize_failed_boundary(result));
+        failed_snippet(child, result, noop);
+        child.#out.push(BLOCK_CLOSE);
+      }
+    }
   }
   /**
    * Create a component renderer. The component renderer inherits the state from the parent,
@@ -465,11 +640,11 @@ class Renderer {
   option(attrs, body, css_hash, classes, styles, flags, is_rich) {
     this.#out.push(`<option${attributes(attrs, css_hash, classes, styles, flags)}`);
     const close = (renderer, value, { head: head2, body: body2 }) => {
-      if ("value" in attrs) {
+      if (has_own_property.call(attrs, "value")) {
         value = attrs.value;
       }
       if (value === this.local.select_value) {
-        renderer.#out.push(" selected");
+        renderer.#out.push(' selected=""');
       }
       renderer.#out.push(`>${body2}${is_rich ? "<!>" : ""}</option>`);
       if (head2) {
@@ -490,7 +665,7 @@ class Renderer {
         }
       });
     } else {
-      close(this, body, { body });
+      close(this, body, { body: escape_html(body) });
     }
   }
   /**
@@ -556,9 +731,11 @@ class Renderer {
       );
     }
     this.local = other.local;
-    this.#out = other.#out.map((item) => {
-      if (item instanceof Renderer) {
-        item.subsume(item);
+    this.#out = other.#out.map((item, i) => {
+      const current = this.#out[i];
+      if (current instanceof Renderer && item instanceof Renderer) {
+        current.subsume(item);
+        return current;
       }
       return item;
     });
@@ -567,6 +744,20 @@ class Renderer {
   }
   get length() {
     return this.#out.length;
+  }
+  /**
+   * Creates the hydration comment that marks the start of a failed boundary.
+   * The error is JSON-serialized and embedded inside an HTML comment for the client
+   * to parse during hydration. The JSON is escaped to prevent `-->` or `<!--` sequences
+   * from breaking out of the comment (XSS). Uses unicode escapes which `JSON.parse()`
+   * handles transparently.
+   * @param {unknown} error
+   * @returns {string}
+   */
+  static #serialize_failed_boundary(error) {
+    var json = JSON.stringify(error);
+    var escaped = json.replace(/>/g, "\\u003e").replace(/</g, "\\u003c");
+    return `<!--${HYDRATION_START_FAILED}${escaped}-->`;
   }
   /**
    * Only available on the server and when compiling with the `server` option.
@@ -740,7 +931,26 @@ class Renderer {
       if (typeof item === "string") {
         content[this.type] += item;
       } else if (item instanceof Renderer) {
-        await item.#collect_content_async(content);
+        if (item.#boundary) {
+          const boundary_content = { head: "", body: "" };
+          try {
+            await item.#collect_content_async(boundary_content);
+            content.head += boundary_content.head;
+            content.body += boundary_content.body;
+          } catch (error) {
+            const { context, failed, transformError } = item.#boundary;
+            set_ssr_context(context);
+            let transformed = await transformError(error);
+            const failed_renderer = new Renderer(item.global, item);
+            failed_renderer.type = item.type;
+            failed_renderer.#out.push(Renderer.#serialize_failed_boundary(transformed));
+            failed(failed_renderer, transformed, noop);
+            failed_renderer.#out.push(BLOCK_CLOSE);
+            await failed_renderer.#collect_content_async(content);
+          }
+        } else {
+          await item.#collect_content_async(content);
+        }
       }
     }
     return content;
@@ -759,25 +969,29 @@ class Renderer {
    * @template {Record<string, any>} Props
    * @param {'sync' | 'async'} mode
    * @param {import('svelte').Component<Props>} component
-   * @param {{ props?: Omit<Props, '$$slots' | '$$events'>; context?: Map<any, any>; idPrefix?: string; csp?: Csp }} options
+   * @param {{ props?: Omit<Props, '$$slots' | '$$events'>; context?: Map<any, any>; idPrefix?: string; csp?: Csp; transformError?: (error: unknown) => unknown }} options
    * @returns {Renderer}
    */
   static #open_render(mode, component, options) {
-    const renderer = new Renderer(
-      new SSRState(mode, options.idPrefix ? options.idPrefix + "-" : "", options.csp)
-    );
-    renderer.push(BLOCK_OPEN);
-    if (options.context) {
-      push();
-      ssr_context.c = options.context;
-      ssr_context.r = renderer;
+    var previous_context = ssr_context;
+    try {
+      const renderer = new Renderer(
+        new SSRState(
+          mode,
+          options.idPrefix ? options.idPrefix + "-" : "",
+          options.csp,
+          options.transformError
+        )
+      );
+      const context = { p: null, c: options.context ?? null, r: renderer };
+      set_ssr_context(context);
+      renderer.push(BLOCK_OPEN);
+      component(renderer, options.props ?? {});
+      renderer.push(BLOCK_CLOSE);
+      return renderer;
+    } finally {
+      set_ssr_context(previous_context);
     }
-    component(renderer, options.props ?? {});
-    if (options.context) {
-      pop();
-    }
-    renderer.push(BLOCK_CLOSE);
-    return renderer;
   }
   /**
    * @param {AccumulatedContent} content
@@ -853,16 +1067,26 @@ class SSRState {
   uid;
   /** @readonly @type {Set<{ hash: string; code: string }>} */
   css = /* @__PURE__ */ new Set();
+  /**
+   * `transformError` passed to `render`. Called when an error boundary catches an error.
+   * Throws by default if unset in `render`.
+   * @type {(error: unknown) => unknown}
+   */
+  transformError;
   /** @type {{ path: number[], value: string }} */
   #title = { path: [], value: "" };
   /**
    * @param {'sync' | 'async'} mode
    * @param {string} id_prefix
    * @param {Csp} csp
+   * @param {((error: unknown) => unknown) | undefined} [transformError]
    */
-  constructor(mode, id_prefix = "", csp = { hash: false }) {
+  constructor(mode, id_prefix = "", csp = { hash: false }, transformError) {
     this.mode = mode;
     this.csp = { ...csp, script_hashes: [] };
+    this.transformError = transformError ?? ((error) => {
+      throw error;
+    });
     let uid = 1;
     this.uid = () => `${id_prefix}s${uid++}`;
   }
@@ -920,14 +1144,14 @@ function attributes(attrs, css_hash, classes, styles, flags = 0) {
   const is_html = (flags & ELEMENT_IS_NAMESPACED) === 0;
   const lowercase = (flags & ELEMENT_PRESERVE_ATTRIBUTE_CASE) === 0;
   const is_input = (flags & ELEMENT_IS_INPUT) !== 0;
-  for (name in attrs) {
+  for (name of Object.keys(attrs)) {
     if (typeof attrs[name] === "function") continue;
     if (name[0] === "$" && name[1] === "$") continue;
     if (INVALID_ATTR_NAME_CHAR_REGEX.test(name)) continue;
     var value = attrs[name];
-    if (lowercase) {
-      name = name.toLowerCase();
-    }
+    var lower = name.toLowerCase();
+    if (lowercase) name = lower;
+    if (lower.length > 2 && lower.startsWith("on")) continue;
     if (is_input) {
       if (name === "defaultvalue" || name === "defaultchecked") {
         name = name === "defaultvalue" ? "value" : "checked";
@@ -955,46 +1179,88 @@ function ensure_array_like(array_like_or_iterator) {
   }
   return [];
 }
+function once(get_value) {
+  let value = (
+    /** @type {V} */
+    UNINITIALIZED
+  );
+  return () => {
+    if (value === UNINITIALIZED) {
+      value = get_value();
+    }
+    return value;
+  };
+}
+function derived(fn) {
+  const get_value = ssr_context === null ? fn : once(fn);
+  let updated_value;
+  return function(new_value) {
+    if (arguments.length === 0) {
+      return updated_value ?? get_value();
+    }
+    updated_value = new_value;
+    return updated_value;
+  };
+}
 export {
+  define_property as $,
   ASYNC as A,
   BOUNDARY_EFFECT as B,
   COMMENT_NODE as C,
   DIRTY as D,
   ERROR_VALUE as E,
-  ensure_array_like as F,
-  stringify as G,
+  HYDRATION_START_FAILED as F,
+  EFFECT_TRANSPARENT as G,
   HYDRATION_ERROR as H,
   INERT as I,
-  LEGACY_PROPS as L,
+  EFFECT_PRESERVED as J,
+  STATE_SYMBOL as K,
+  object_prototype as L,
   MAYBE_DIRTY as M,
-  ROOT_EFFECT as R,
-  STATE_SYMBOL as S,
+  array_prototype as N,
+  get_descriptor as O,
+  get_prototype_of as P,
+  is_array as Q,
+  REACTION_RAN as R,
+  STALE_REACTION as S,
+  is_extensible as T,
   UNINITIALIZED as U,
+  HEAD_EFFECT as V,
   WAS_MARKED as W,
-  HYDRATION_END as a,
-  HYDRATION_START as b,
-  HYDRATION_START_ELSE as c,
-  EFFECT_RAN as d,
-  CONNECTED as e,
-  CLEAN as f,
-  DERIVED as g,
-  EFFECT as h,
-  BLOCK_EFFECT as i,
-  BRANCH_EFFECT as j,
-  RENDER_EFFECT as k,
-  MANAGED_EFFECT as l,
-  DESTROYED as m,
-  HEAD_EFFECT as n,
-  EFFECT_TRANSPARENT as o,
-  EFFECT_PRESERVED as p,
-  EAGER_EFFECT as q,
-  STALE_REACTION as r,
-  USER_EFFECT as s,
-  REACTION_IS_UPDATING as t,
-  is_passive_event as u,
-  render as v,
-  head as w,
-  attr as x,
-  attr_style as y,
-  attr_class as z
+  DESTROYING as X,
+  USER_EFFECT as Y,
+  REACTION_IS_UPDATING as Z,
+  index_of as _,
+  attr as a,
+  array_from as a0,
+  is_passive_event as a1,
+  LEGACY_PROPS as a2,
+  render as a3,
+  setContext as a4,
+  derived as a5,
+  attr_style as b,
+  attr_class as c,
+  ensure_array_like as d,
+  escape_html as e,
+  HYDRATION_END as f,
+  getContext as g,
+  head as h,
+  HYDRATION_START as i,
+  HYDRATION_START_ELSE as j,
+  EFFECT as k,
+  CONNECTED as l,
+  CLEAN as m,
+  noop as n,
+  DERIVED as o,
+  BLOCK_EFFECT as p,
+  DESTROYED as q,
+  run_all as r,
+  stringify as s,
+  EAGER_EFFECT as t,
+  deferred as u,
+  RENDER_EFFECT as v,
+  MANAGED_EFFECT as w,
+  ROOT_EFFECT as x,
+  BRANCH_EFFECT as y,
+  includes as z
 };

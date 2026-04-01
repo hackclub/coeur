@@ -1,10 +1,11 @@
 import "clsx";
-import { n as noop } from "./equality.js";
+import { n as noop, g as getContext } from "./index.js";
+import "./url.js";
 import "@sveltejs/kit/internal/server";
+import "./root.js";
 import "@sveltejs/kit/internal";
-import { w as writable } from "./exports.js";
 import "./utils.js";
-import { g as getContext } from "./context.js";
+import { w as writable } from "./exports.js";
 function create_updated_store() {
   const { set, subscribe } = writable(false);
   {
@@ -16,6 +17,7 @@ function create_updated_store() {
   }
 }
 const is_legacy = noop.toString().includes("$$") || /function \w+\(\) \{\}/.test(noop.toString());
+const placeholder_url = "a:";
 if (is_legacy) {
   ({
     data: {},
@@ -25,7 +27,7 @@ if (is_legacy) {
     route: { id: null },
     state: {},
     status: -1,
-    url: new URL("https://example.com")
+    url: new URL(placeholder_url)
   });
 }
 const stores = {

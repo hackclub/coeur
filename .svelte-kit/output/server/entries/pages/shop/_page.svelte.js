@@ -1,8 +1,9 @@
-import { w as head, x as attr, y as attr_style, F as ensure_array_like, z as attr_class, G as stringify } from "../../../chunks/index.js";
+import { h as head, a as attr, b as attr_style, d as ensure_array_like, c as attr_class, s as stringify, e as escape_html } from "../../../chunks/index.js";
 import { b as base } from "../../../chunks/server.js";
+import "../../../chunks/url.js";
 import "@sveltejs/kit/internal/server";
+import "../../../chunks/root.js";
 import { F as Footer } from "../../../chunks/footer.js";
-import { e as escape_html } from "../../../chunks/context.js";
 let products = [
   {
     "name": "Plushie",
@@ -81,32 +82,32 @@ function _page($$renderer, $$props) {
       let x = each_array[$$index];
       $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)}${attr("alt", x.name)} class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> <h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
       if (cart[x.id] > 0) {
-        $$renderer2.push("<!--[-->");
+        $$renderer2.push("<!--[0-->");
         $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
       } else {
-        $$renderer2.push("<!--[!-->");
+        $$renderer2.push("<!--[-1-->");
       }
       $$renderer2.push(`<!--]--></h3> `);
       if (x.stocked) {
-        $$renderer2.push("<!--[-->");
+        $$renderer2.push("<!--[0-->");
         $$renderer2.push(`<p class="svelte-a8yt2h"><button${attr_class("purchase svelte-a8yt2h", void 0, { "invisible": cart[x.id] == 0 })} translate="no">-</button><button class="purchase svelte-a8yt2h" translate="no">+</button></p>`);
       } else {
-        $$renderer2.push("<!--[!-->");
+        $$renderer2.push("<!--[-1-->");
         $$renderer2.push(`<p class="outOfStock svelte-a8yt2h"><i class="svelte-a8yt2h"><em class="svelte-a8yt2h">This item is not currently in stock</em></i></p>`);
       }
       $$renderer2.push(`<!--]--> <p class="svelte-a8yt2h">${escape_html(x.desc)}</p> `);
       if (x.grant) {
-        $$renderer2.push("<!--[-->");
+        $$renderer2.push("<!--[0-->");
         $$renderer2.push(`<span class="hcb svelte-a8yt2h">HCB Grant</span>`);
       } else {
-        $$renderer2.push("<!--[!-->");
+        $$renderer2.push("<!--[-1-->");
       }
       $$renderer2.push(`<!--]--> `);
       if (x.info != null) {
-        $$renderer2.push("<!--[-->");
+        $$renderer2.push("<!--[0-->");
         $$renderer2.push(`<div class="info svelte-a8yt2h"><p class="svelte-a8yt2h">${escape_html(x.info)}</p></div>`);
       } else {
-        $$renderer2.push("<!--[!-->");
+        $$renderer2.push("<!--[-1-->");
       }
       $$renderer2.push(`<!--]--></div>`);
     }

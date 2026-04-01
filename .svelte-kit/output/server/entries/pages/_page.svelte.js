@@ -1,8 +1,9 @@
-import { w as head, x as attr, y as attr_style, z as attr_class, F as ensure_array_like, G as stringify } from "../../chunks/index.js";
+import { h as head, a as attr, b as attr_style, c as attr_class, e as escape_html, d as ensure_array_like, s as stringify } from "../../chunks/index.js";
 import { b as base } from "../../chunks/server.js";
+import "../../chunks/url.js";
 import "@sveltejs/kit/internal/server";
+import "../../chunks/root.js";
 import { F as Footer } from "../../chunks/footer.js";
-import { e as escape_html } from "../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let mobile = "";
@@ -29,7 +30,7 @@ function _page($$renderer, $$props) {
     });
     $$renderer2.push(`<div id="landing" class="svelte-1uha8ag">`);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/1.png`)} alt="background" class="svelte-1uha8ag"${attr_style("", {
         transform: `translateY(${stringify(charY * 0.5 * mobileFactor)}px)`
       })}/>`);
@@ -38,12 +39,12 @@ function _page($$renderer, $$props) {
       transform: `translateY(${stringify(charY * 0.5 * mobileFactor)}px)`
     })}/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/3.png`)} class="graphic svelte-1uha8ag" alt="Orpheus and Heidi"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/4.png`)} class="graphic wave svelte-1uha8ag" alt="Pink Wave"/> <img${attr("src", `${stringify(base)}/images/landing${stringify(mobile)}/5.png`)} class="graphic svelte-1uha8ag" alt="Orpheus's Hands"/></div> <div id="ys" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h1 class="svelte-1uha8ag"${attr_style("", { "font-size": "50px" })}>Make E-Cards</h1> <h3 class="svelte-1uha8ag">E-Cards should be viewable on the web and engaging!</h3> <button class="svelte-1uha8ag"${attr_style("", { "margin-top": "20px", width: "60%" })}>View requirements for submissions</button></div> <div class="svelte-1uha8ag"><a href="https://hacklyn.city/orpheus" class="svelte-1uha8ag"><img translate="no"${attr("src", `${stringify(base)}/images/orpheusCard.png`)} alt="Demo e-card" class="svelte-1uha8ag"${attr_style("", { "max-width": "90%", transform: "rotate(2deg)" })}/></a> <p class="svelte-1uha8ag">Check out this example! <i class="svelte-1uha8ag">(Click on the image)</i></p> <p class="svelte-1uha8ag">`);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<button class="svelte-1uha8ag">I need more guidance</button>`);
     }
     $$renderer2.push(`<!--]--></p></div></div> `);
     {
-      $$renderer2.push("<!--[!-->");
+      $$renderer2.push("<!--[-1-->");
     }
     $$renderer2.push(`<!--]--> <div id="ws" class="svelte-1uha8ag"><img class="waveDown svelte-1uha8ag"${attr("src", `${stringify(base)}/images/wave1.png`)} alt="Wave graphic"${attr_style("", {
       width: "100%",
@@ -51,7 +52,7 @@ function _page($$renderer, $$props) {
       "-webkit-user-drag": "none"
     })}/> <div id="grid"${attr_class("svelte-1uha8ag", void 0, { "mobile": mobile != "" })}>`);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<div class="svelte-1uha8ag"><img translate="no"${attr("src", `${stringify(base)}/images/sweatshirt.png`)} alt="Sweatshirt" class="svelte-1uha8ag"${attr_style("", {
         "max-width": "60%",
         height: "auto",
@@ -65,7 +66,7 @@ function _page($$renderer, $$props) {
       "-webkit-user-drag": "none"
     })}/> <h1 class="svelte-1uha8ag"${attr_style("", { "font-size": "50px" })}>Sugar Rushes!</h1> <p class="svelte-1uha8ag"${attr_style("", { "margin-bottom": "30px" })}>You can earn more hearts for each project you submit by getting sugar rushes. Sugar rushes are bonuses for completing tasks and pushing your bounds!</p> `);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<img${attr("src", `${stringify(base)}/images/donut.png`)} alt="Orpheus in a giant donut" style="width: 30%; height: auto" class="svelte-1uha8ag"/>`);
     }
     $$renderer2.push(`<!--]--> <h2 class="svelte-1uha8ag"${attr_style("", {
@@ -73,12 +74,12 @@ function _page($$renderer, $$props) {
       "margin-bottom": "20px"
     })}>Sugar Rush Bonuses</h2> <div id="sugarGrid" class="svelte-1uha8ag"><div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Spend over 12 hours on your project</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Have your project work fully on mobile and desktop. Your responsive design should work well.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Make a card for someone in Hack Club! Include a picture in the slack channel of you sending them the card.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+1 Heart</h3> <p class="svelte-1uha8ag">Use a web-framework you've never learned or used before!</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+2 Hearts</h3> <p class="svelte-1uha8ag">Participate in a demo and get approved by staff for this bonus. Demos will be announced in the slack channel. You can only get this bonus once for an individual project.</p></div> <div class="svelte-1uha8ag"><h3 class="svelte-1uha8ag">+3 Hearts</h3> <p class="svelte-1uha8ag">Exceptional quality project. This sugar rush is awarded by staff only to impressive and well-built projects. You do not need to list this on your README.</p></div></div> <p class="svelte-1uha8ag">More may be added in the future. Check back here periodically!</p></div> <div id="submit" class="svelte-1uha8ag"><img${attr("src", `${stringify(base)}/images/wave3.png`)} alt="Wave graphic" class="waveDown svelte-1uha8ag" style="width: 100%; user-select: none; -webkit-user-drag: none"/> <h1 style="padding: 20px;" class="svelte-1uha8ag">Ready to submit?</h1> `);
     {
-      $$renderer2.push("<!--[!-->");
+      $$renderer2.push("<!--[-1-->");
       $$renderer2.push(`<p class="svelte-1uha8ag">${escape_html(submissionMessage)}</p>`);
     }
     $$renderer2.push(`<!--]--> `);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<img${attr("src", `${stringify(base)}/images/envelope.png`)} alt="Envelope" style="max-width: 500px; transform: rotate(3deg);" class="svelte-1uha8ag"/>`);
     }
     $$renderer2.push(`<!--]--></div> <div id="faq" class="svelte-1uha8ag"><img class="waveDown svelte-1uha8ag" alt="Wave graphic"${attr("src", `${stringify(base)}/images/wave4.png`)} style="width: 100%; height: auto; user-select: none; -webkit-user-drag: none"/> <h1 class="svelte-1uha8ag"${attr_style("", { "text-shadow": "0px 0px 20px grey" })}>FAQ</h1> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">Can I participate in this program?</h2> <p class="svelte-1uha8ag">If you are 13-18 and in high school, then yes! However, we aren't able to ship items or distribute grants in some countries <i class="svelte-1uha8ag">(most countries are supported)</i>. Let us know if you have any doubts about your ability to recieve prizes!</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">Can I submit multiple projects?</h2> <p class="svelte-1uha8ag">Yes! You can make multiple e-cards; however, you should challenge yourself to add more features to each new submission <i class="svelte-1uha8ag">(we will check the progression of your submissions)</i>. For prizes such as the sweatshirt, you aren't likely to get enough hearts from one submission to purchase.</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">Can I use Lapse?</h2> <p class="svelte-1uha8ag">You can use <a href="https://lapse.hackclub.com" class="svelte-1uha8ag">Lapse</a> to track hours worked on graphics and art; however, this should not exceed 20% of the total hours you submit.</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">How many hours do I need to put into a project at minimum?</h2> <p class="svelte-1uha8ag">You need to put in 6 hours for each submission, at a minimum.</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">If I get a grant for an item, how can I use it?</h2> <p class="svelte-1uha8ag">All grants will be processed and distributed on <a href="https://hcb.hackclub.com" class="svelte-1uha8ag">HCB</a>. You should signup on the platform and use the same email that you use on your submission form.</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">How many hearts will an average project get?</h2> <p class="svelte-1uha8ag">Projects are awarded between 2-10 hearts based on overall quality. From this, sugar rushes are then applied. The demo project would get around 8 hearts in total, including one +2 sugar rush.</p></div> <div class="svelte-1uha8ag"><h2 class="svelte-1uha8ag">I have more questions!</h2> <p class="svelte-1uha8ag">Ask your questions in the <i class="svelte-1uha8ag">#coeur</i> channel on the Hack Club slack!</p></div></div> `);

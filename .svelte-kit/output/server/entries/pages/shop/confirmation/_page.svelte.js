@@ -1,8 +1,9 @@
-import { w as head, x as attr, z as attr_class, y as attr_style, F as ensure_array_like, G as stringify } from "../../../../chunks/index.js";
+import { h as head, a as attr, c as attr_class, b as attr_style, d as ensure_array_like, e as escape_html, s as stringify } from "../../../../chunks/index.js";
 import { b as base } from "../../../../chunks/server.js";
+import "../../../../chunks/url.js";
 import "@sveltejs/kit/internal/server";
+import "../../../../chunks/root.js";
 import { F as Footer } from "../../../../chunks/footer.js";
-import { e as escape_html } from "../../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let Mobile = "";
@@ -22,12 +23,12 @@ function _page($$renderer, $$props) {
     }
     $$renderer2.push(`<!--]--> <p class="svelte-1kl2wff">______________</p> <h1 class="svelte-1kl2wff">${escape_html(total)} total hearts</h1> `);
     {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       $$renderer2.push(`<img id="heidiEnvelope"${attr("src", `${stringify(base)}/images/heidiEnvelope.png`)} alt="Heidi in an envelope" style="width: 35%; height: auto; display: block; margin: 0 auto;"/>`);
     }
     $$renderer2.push(`<!--]--></div> `);
     {
-      $$renderer2.push("<!--[!-->");
+      $$renderer2.push("<!--[-1-->");
     }
     $$renderer2.push(`<!--]--> `);
     Footer($$renderer2);

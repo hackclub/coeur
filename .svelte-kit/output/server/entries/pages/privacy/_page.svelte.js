@@ -1,6 +1,8 @@
-import { w as head, x as attr, y as attr_style, G as stringify } from "../../../chunks/index.js";
+import { h as head, a as attr, b as attr_style, s as stringify } from "../../../chunks/index.js";
 import { b as base } from "../../../chunks/server.js";
+import "../../../chunks/url.js";
 import "@sveltejs/kit/internal/server";
+import "../../../chunks/root.js";
 import { F as Footer } from "../../../chunks/footer.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
