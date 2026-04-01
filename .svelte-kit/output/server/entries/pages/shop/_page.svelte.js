@@ -34,10 +34,10 @@ let products = [
   {
     "name": "Stamp Shirt",
     "hearts": 15,
-    "desc": "Orpheus and Heidi on a stamp! This item gets unlocked when our Slack channel gets to 200 channel members!",
+    "desc": "Orpheus and Heidi on a stamp! Note that this item will only be shipped out at the end of the program entirely; however, you can lock in your purchase at the current price displayed above before it fluctuates.",
     "img": "shirt",
     "grant": false,
-    "stocked": false,
+    "stocked": true,
     "info": "This is a cardinal red shirt available in XS, S, M, L, and XL adult sizes",
     "id": 3
   },
