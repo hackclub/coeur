@@ -1,7 +1,7 @@
 export let products = [
     {
         "name": "Plushie",
-        "hearts": 2,
+        "hearts": 3,
         "desc": "$10 USD for a heart themed plushie, or heart themed plushies! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
         "img": "plushie",
         "grant": true,
@@ -10,7 +10,7 @@ export let products = [
     },
     {
         "name": "Stationary",
-        "hearts": 2,
+        "hearts": 3,
         "desc": "$10 USD for heart themed stationary! You can put this grant towards Amazon, Miniso, Shopee, Ikea, or EBay. This grant can be stacked.",
         "img": "pens",
         "grant": true,
