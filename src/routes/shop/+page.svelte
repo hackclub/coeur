@@ -46,7 +46,12 @@
         let order = "";
         for (let i = 0; i < cart.length; i++) {
             if (cart[i] > 0) {
-                order += "[" + products[i].name + ";" + products[i].hearts + ";" + cart[i] + "]";
+                if (products[i].discount == null || (cart[3] == 0 && cart[4] == 0 && cart[5] == 0)) {
+                    order += "[" + products[i].name + ";" + products[i].hearts + ";" + cart[i] + "]";
+                }
+                else {
+                    order += "[" + products[i].name + ";" + products[i].discount + ";" + cart[i] + "]";
+                }
             }
         }
         window.location.href = base + "/shop/confirmation?order=" + order;
@@ -215,7 +220,15 @@
     <div class:purchased={cart[x.id] > 0}>
         <img src="{base}/images/shop/{x.img}.png" alt="{x.name}" />
         <h2>{x.name}</h2>
+        {#if x.discount != null}
+            {#if cart[3] == 0 && cart[4] == 0 && cart[5] == 0}
+            <h3 translate="no"><span class="material-symbols-outlined" translate="no">favorite</span> {x.hearts} {#if cart[x.id] > 0}<i>(x {cart[x.id]})</i>{/if}</h3>
+            {:else}
+            <h3 translate="no"><span class="material-symbols-outlined" translate="no">favorite</span> <span style:text-decoration="line-through">{x.hearts}</span> {" -> "} {x.discount} {#if cart[x.id] > 0}<i>(x {cart[x.id]})</i>{/if}</h3>
+            {/if}
+        {:else}
         <h3 translate="no"><span class="material-symbols-outlined" translate="no">favorite</span> {x.hearts} {#if cart[x.id] > 0}<i>(x {cart[x.id]})</i>{/if}</h3>
+        {/if}
         {#if x.stocked}
             <p><button class="purchase" class:invisible={cart[x.id] == 0} translate="no" onclick={function() {modifyCart(0, x.id)}}>-</button><button class="purchase" translate="no"  onclick={function() {modifyCart(1, x.id)}}>+</button></p>
         {:else}

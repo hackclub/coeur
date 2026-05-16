@@ -18,12 +18,14 @@ export let products = [
         "id": 1
     },
     {
-        "name": "Sticker Sheet",
+        "name": "Keychain",
         "hearts": 6,
-        "desc": "More details soon...",
-        "img": "soon",
+        "discount": 2,
+        "desc": "Get a heart themed Hack Club keychain! This item is discounted with orders that include a t-shirt or sweatshirt.",
+        "img": "keychain",
         "grant": false,
-        "stocked": false,
+        "stocked": true,
+        "info": "This item comes with a keyring and 3D printed decorational part.",
         "id": 2
     },
     {

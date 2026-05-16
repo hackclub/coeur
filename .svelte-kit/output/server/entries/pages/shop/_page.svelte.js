@@ -24,12 +24,14 @@ let products = [
     "id": 1
   },
   {
-    "name": "Sticker Sheet",
+    "name": "Keychain",
     "hearts": 6,
-    "desc": "More details soon...",
-    "img": "soon",
+    "discount": 2,
+    "desc": "Get a heart themed Hack Club keychain! This item is discounted with orders that include a t-shirt or sweatshirt.",
+    "img": "keychain",
     "grant": false,
-    "stocked": false,
+    "stocked": true,
+    "info": "This item comes with a keyring and 3D printed decorational part.",
     "id": 2
   },
   {
@@ -80,14 +82,43 @@ function _page($$renderer, $$props) {
     const each_array = ensure_array_like(products);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let x = each_array[$$index];
-      $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)}${attr("alt", x.name)} class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> <h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
-      if (cart[x.id] > 0) {
+      $$renderer2.push(`<div${attr_class("svelte-a8yt2h", void 0, { "purchased": cart[x.id] > 0 })}><img${attr("src", `${stringify(base)}/images/shop/${stringify(x.img)}.png`)}${attr("alt", x.name)} class="svelte-a8yt2h"/> <h2 class="svelte-a8yt2h">${escape_html(x.name)}</h2> `);
+      if (x.discount != null) {
         $$renderer2.push("<!--[0-->");
-        $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
+        if (cart[3] == 0 && cart[4] == 0 && cart[5] == 0) {
+          $$renderer2.push("<!--[0-->");
+          $$renderer2.push(`<h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
+          if (cart[x.id] > 0) {
+            $$renderer2.push("<!--[0-->");
+            $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
+          } else {
+            $$renderer2.push("<!--[-1-->");
+          }
+          $$renderer2.push(`<!--]--></h3>`);
+        } else {
+          $$renderer2.push("<!--[-1-->");
+          $$renderer2.push(`<h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> <span class="svelte-a8yt2h"${attr_style("", { "text-decoration": "line-through" })}>${escape_html(x.hearts)}</span>  ->  ${escape_html(x.discount)} `);
+          if (cart[x.id] > 0) {
+            $$renderer2.push("<!--[0-->");
+            $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
+          } else {
+            $$renderer2.push("<!--[-1-->");
+          }
+          $$renderer2.push(`<!--]--></h3>`);
+        }
+        $$renderer2.push(`<!--]-->`);
       } else {
         $$renderer2.push("<!--[-1-->");
+        $$renderer2.push(`<h3 translate="no" class="svelte-a8yt2h"><span class="material-symbols-outlined svelte-a8yt2h" translate="no">favorite</span> ${escape_html(x.hearts)} `);
+        if (cart[x.id] > 0) {
+          $$renderer2.push("<!--[0-->");
+          $$renderer2.push(`<i class="svelte-a8yt2h">(x ${escape_html(cart[x.id])})</i>`);
+        } else {
+          $$renderer2.push("<!--[-1-->");
+        }
+        $$renderer2.push(`<!--]--></h3>`);
       }
-      $$renderer2.push(`<!--]--></h3> `);
+      $$renderer2.push(`<!--]--> `);
       if (x.stocked) {
         $$renderer2.push("<!--[0-->");
         $$renderer2.push(`<p class="svelte-a8yt2h"><button${attr_class("purchase svelte-a8yt2h", void 0, { "invisible": cart[x.id] == 0 })} translate="no">-</button><button class="purchase svelte-a8yt2h" translate="no">+</button></p>`);

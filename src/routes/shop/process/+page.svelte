@@ -31,6 +31,9 @@
                         if (products[i].hearts == newOne[1]) {
                             newOne.push("");
                         }
+                        else if (products[i].discount == newOne[1]) {
+                            newOne.push(`This product usually costs ${products[i].hearts}, but seems to be discounted`);
+                        }
                         else {
                             newOne.push(`This product should cost ${products[i].hearts} hearts under current pricing`);
                         }

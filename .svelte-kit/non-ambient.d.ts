@@ -29,7 +29,7 @@ declare module "$app/types" {
 	type MatcherParam<M> = M extends (param : string) => param is (infer U extends string) ? U : string;
 
 	export interface AppTypes {
-		RouteId(): "/" | "/privacy" | "/requirements" | "/resources" | "/shop" | "/shop/confirmation" | "/shop/process" | "/submissions" | "/submissions/[project_id]";
+		RouteId(): "/" | "/privacy" | "/requirements" | "/shop" | "/shop/confirmation" | "/shop/process" | "/submissions" | "/submissions/[project_id]";
 		RouteParams(): {
 			"/submissions/[project_id]": { project_id: string }
 		};
@@ -37,7 +37,6 @@ declare module "$app/types" {
 			"/": { project_id?: string };
 			"/privacy": Record<string, never>;
 			"/requirements": Record<string, never>;
-			"/resources": Record<string, never>;
 			"/shop": Record<string, never>;
 			"/shop/confirmation": Record<string, never>;
 			"/shop/process": Record<string, never>;
@@ -46,6 +45,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/privacy" | "/requirements" | "/shop" | "/shop/confirmation" | "/shop/process" | `/submissions/${string}` & {};
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/images/donut.png" | "/images/envelope.png" | "/images/guide/demos.png" | "/images/guide/flesh.png" | "/images/guide/oneshot.png" | "/images/guide/tutorial.png" | "/images/heidiEnvelope.png" | "/images/landing/1.png" | "/images/landing/2.png" | "/images/landing/3.png" | "/images/landing/4.png" | "/images/landing/5.png" | "/images/landingMobile/1.png" | "/images/landingMobile/2.png" | "/images/landingMobile/3.png" | "/images/landingMobile/4.png" | "/images/landingMobile/5.png" | "/images/orphHeidi.png" | "/images/orpheusCard.png" | "/images/shop/lamp.png" | "/images/shop/pens.png" | "/images/shop/plushie.png" | "/images/shop/shirt.png" | "/images/shop/soon.png" | "/images/shop/sugarRush.png" | "/images/shop/sweatshirt.png" | "/images/shop/sweatshirt2.png" | "/images/sweatshirt.png" | "/images/wave1.png" | "/images/wave2.png" | "/images/wave3.png" | "/images/wave4.png" | "/images/wave5.png" | "/robots.txt" | string & {};
+		Asset(): "/images/donut.png" | "/images/envelope.png" | "/images/guide/demos.png" | "/images/guide/flesh.png" | "/images/guide/oneshot.png" | "/images/guide/tutorial.png" | "/images/heidiEnvelope.png" | "/images/landing/1.png" | "/images/landing/2.png" | "/images/landing/3.png" | "/images/landing/4.png" | "/images/landing/5.png" | "/images/landingMobile/1.png" | "/images/landingMobile/2.png" | "/images/landingMobile/3.png" | "/images/landingMobile/4.png" | "/images/landingMobile/5.png" | "/images/orphHeidi.png" | "/images/orpheusCard.png" | "/images/shop/keychain.png" | "/images/shop/lamp.png" | "/images/shop/pens.png" | "/images/shop/plushie.png" | "/images/shop/shirt.png" | "/images/shop/soon.png" | "/images/shop/sugarRush.png" | "/images/shop/sweatshirt.png" | "/images/shop/sweatshirt2.png" | "/images/sweatshirt.png" | "/images/wave1.png" | "/images/wave2.png" | "/images/wave3.png" | "/images/wave4.png" | "/images/wave5.png" | "/robots.txt" | string & {};
 	}
 }
