@@ -20,7 +20,7 @@ export let products = [
     {
         "name": "Keychain",
         "hearts": 6,
-        "discount": 2,
+        "discount": 1,
         "desc": "Get a heart themed Hack Club keychain! This item is discounted with orders that include a t-shirt or sweatshirt.",
         "img": "keychain",
         "grant": false,
